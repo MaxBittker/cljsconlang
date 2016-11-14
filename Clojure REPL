@@ -1,0 +1,31 @@
+REPL Instructions
+
+Code can be entered at the bottom and executed by pressing shift+enter.
+
+Try it now by typing (+ 1 1) in the bottom section and pressing shift+enter.
+
+Working in another Clojure file and sending forms to the REPL is the most efficient way to work. Use the following key bindings to send code to the REPL. See the settings for more keybindings.
+
+ctrl-alt-, then b
+Execute block. Finds the block of Clojure code your cursor is in and executes that.
+
+ctrl-alt-, s
+Executes the selection. Sends the selected text to the REPL.
+
+You can disable this help text in the settings.
+Atom Ink does not appear to be installed. Install it to get a better REPL experience.
+Starting REPL with lein in /home/max/workspace/cljsconlang
+2016-11-13 23:33:29.717:INFO::main: Logging initialized @3914ms
+nREPL server started on port 41587 on host 127.0.0.1 - nrepl://127.0.0.1:41587
+Refreshing code...
+No user namespace defined. Defaulting to clojure.tools.namespace.repl/refresh.
+
+:reloading (conlang.middleware conlang.handler conlang.server conlang.repl)
+Refresh complete
+(str/join [200 100])
+CompilerException java.lang.RuntimeException: No such namespace: str, compiling:(/tmp/form-init1463715419229158016.clj:1:5) 
+(clojure.string/join [200 100])
+user=>
+"200100"
+--------------------
+(clojure.string/join [200 100] ",")
