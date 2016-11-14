@@ -1,0 +1,2 @@
+# cljsconlang
+nanogenmo project, hopefully :)
