@@ -1114,3 +1114,1009 @@ notifying browser that file changed:  out/conlang/core.js
 [0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.363 seconds.[0m
 notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.132 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.329 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.322 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.28 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.346 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.275 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.301 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.296 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.29 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.275 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.295 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.268 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.271 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.289 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.338 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.416 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+Notifyng browser that CSS file changed: resources/public/css/site.css
+Notifyng browser that CSS file changed: resources/public/css/site.css
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.293 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.304 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.134 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.289 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.314 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.33 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.206 seconds.[0m
+[36m----  Could not Read  src/cljs/conlang/core.cljs   line:16  column:8  ----[0m
+
+  [1mEOF while reading, starting at line 16 and column 8[0m
+
+  [36m14[0m  [36m   (repeatedly[0m
+  [36m15[0m  [36m     (fn [][0m
+  [33m16[0m  [1m       [(dec (* (Math/random) (Math/random) 250))[0m
+  [0m  [0m  [33m       ^--- EOF while reading, starting at line 16 and column 8[0m
+  [36m17[0m  [36m        (dec (* (Math/random) (Math/random) 250))[0m
+  [36m18[0m  [36m[0m
+  [36m19[0m  [36m(defn home-page [][0m
+
+[36m----  Reader Error : Please see src/cljs/conlang/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:33  column:19  ----[0m
+
+  [1mNo such namespace: r, could not locate r.cljs, r.cljc, or Closure namespace ""[0m
+
+  [36m29[0m  [36m         [:polygon {:points (format-points pts)}]][0m
+  [36m30[0m  [36m        [:g {:transform "rotate(270, 0, 0)"}[0m
+  [36m31[0m  [36m         [:polygon {:points (format-points pts)}]]]]]))[0m
+  [36m32[0m  [36m[0m
+  [33m33[0m  [1m(def click-count (r/atom 0))[0m
+  [0m  [0m  [33m                  ^--- No such namespace: r, could not locate r.cljs, r.cljc, or Closure namespace ""[0m
+  [36m34[0m  [36m[0m
+  [36m35[0m  [36m(defn counting-component [][0m
+  [36m36[0m  [36m [:div[0m
+  [36m37[0m  [36m  "The atom " [:code "click-count"] " has value: "[0m
+  [36m38[0m  [36m  @click-count ". "[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:33  column:19  ----[0m
+
+  [1mUse of undeclared Var r/atom[0m
+
+  [36m29[0m  [36m         [:polygon {:points (format-points pts)}]][0m
+  [36m30[0m  [36m        [:g {:transform "rotate(270, 0, 0)"}[0m
+  [36m31[0m  [36m         [:polygon {:points (format-points pts)}]]]]]))[0m
+  [36m32[0m  [36m[0m
+  [33m33[0m  [1m(def click-count (r/atom 0))[0m
+  [0m  [0m  [33m                  ^--- Use of undeclared Var r/atom[0m
+  [36m34[0m  [36m[0m
+  [36m35[0m  [36m(defn counting-component [][0m
+  [36m36[0m  [36m [:div[0m
+  [36m37[0m  [36m  "The atom " [:code "click-count"] " has value: "[0m
+  [36m38[0m  [36m  @click-count ". "[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.33 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.277 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:22  column:6  ----[0m
+
+  [1mUse of undeclared Var conlang.core/counting-component[0m
+
+  [36m19[0m  [36m(defn home-page [][0m
+  [36m20[0m  [36m  (let [pts (random-points)][0m
+  [36m21[0m  [36m   [:div {:class "display"}[0m
+  [33m22[0m  [1m    [counting-component][0m
+  [0m  [0m  [33m     ^--- Use of undeclared Var conlang.core/counting-component[0m
+  [36m23[0m  [36m    [:svg {:width 500 :height 500}[0m
+  [36m24[0m  [36m      [:g {:transform "translate(250, 250)"}[0m
+  [36m25[0m  [36m        [:g {:transform "rotate(0, 0, 0)"}[0m
+  [36m26[0m  [36m         [:polygon {:points (format-points pts)}]][0m
+  [36m27[0m  [36m        [:g {:transform "rotate(90, 0, 0)"}[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.405 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.212 seconds.[0m
+[36m----  Could not Read  src/cljs/conlang/core.cljs   line:35  column:51  ----[0m
+
+  [1mUnmatched delimiter )[0m
+
+  [36m33[0m  [36m[:g {:transform "translate(250, 250)"}[0m
+  [36m34[0m  [36m  [:g {:transform "rotate(0, 0, 0)"}][0m
+  [33m35[0m  [1m   [:polygon {:points (format-points pts)}])[0m
+  [0m  [0m  [33m                                            ^--- Unmatched delimiter )[0m
+  [36m36[0m  [36m  [:g {:transform "rotate(90, 0, 0)"}[0m
+  [36m37[0m  [36m   [:polygon {:points (format-points pts)}]][0m
+  [36m38[0m  [36m  [:g {:transform "rotate(180 ,0, 0)"}[0m
+
+[36m----  Reader Error : Please see src/cljs/conlang/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.271 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.296 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.272 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.353 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.282 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.264 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.276 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.299 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.275 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:9  column:19  ----[0m
+
+  [1mNo such namespace: r, could not locate r.cljs, r.cljc, or Closure namespace ""[0m
+
+  [36m 5[0m  [36m              [accountant.core :as accountant]))[0m
+  [36m 6[0m  [36m[0m
+  [36m 7[0m  [36m;; -------------------------[0m
+  [36m 8[0m  [36m;; Views[0m
+  [33m 9[0m  [1m(def click-count (r/atom 0))[0m
+  [0m  [0m  [33m                  ^--- No such namespace: r, could not locate r.cljs, r.cljc, or Closure namespace ""[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defn counting-component [][0m
+  [36m12[0m  [36m  [:div[0m
+  [36m13[0m  [36m   "The atom " [:code "click-count"] " has value: "[0m
+  [36m14[0m  [36m   @click-count ". "[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:9  column:19  ----[0m
+
+  [1mUse of undeclared Var r/atom[0m
+
+  [36m 5[0m  [36m              [accountant.core :as accountant]))[0m
+  [36m 6[0m  [36m[0m
+  [36m 7[0m  [36m;; -------------------------[0m
+  [36m 8[0m  [36m;; Views[0m
+  [33m 9[0m  [1m(def click-count (r/atom 0))[0m
+  [0m  [0m  [33m                  ^--- Use of undeclared Var r/atom[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defn counting-component [][0m
+  [36m12[0m  [36m  [:div[0m
+  [36m13[0m  [36m   "The atom " [:code "click-count"] " has value: "[0m
+  [36m14[0m  [36m   @click-count ". "[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.325 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.287 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:35  column:44  ----[0m
+
+  [1mUse of undeclared Var conlang.core/pts[0m
+
+  [36m31[0m  [36m[:div {:class "display"}[0m
+  [36m32[0m  [36m [:svg {:width 1 :height 1}[0m
+  [36m33[0m  [36m   [:g {:transform "translate(250, 250)"}[0m
+  [36m34[0m  [36m     [:g {:transform "rotate(0, 0, 0)"}[0m
+  [33m35[0m  [1m      [:polygon {:points (format-points pts)}]][0m
+  [0m  [0m  [33m                                        ^--- Use of undeclared Var conlang.core/pts[0m
+  [36m36[0m  [36m     [:g {:transform "rotate(90, 0, 0)"}[0m
+  [36m37[0m  [36m      [:polygon {:points (format-points pts)}]][0m
+  [36m38[0m  [36m     [:g {:transform "rotate(180 ,0, 0)"}[0m
+  [36m39[0m  [36m      [:polygon {:points (format-points pts)}]][0m
+  [36m40[0m  [36m     [:g {:transform "rotate(270, 0, 0)"}[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:37  column:44  ----[0m
+
+  [1mUse of undeclared Var conlang.core/pts[0m
+
+  [36m33[0m  [36m[:g {:transform "translate(250, 250)"}[0m
+  [36m34[0m  [36m  [:g {:transform "rotate(0, 0, 0)"}[0m
+  [36m35[0m  [36m   [:polygon {:points (format-points pts)}]][0m
+  [36m36[0m  [36m  [:g {:transform "rotate(90, 0, 0)"}[0m
+  [33m37[0m  [1m   [:polygon {:points (format-points pts)}]][0m
+  [0m  [0m  [33m                                     ^--- Use of undeclared Var conlang.core/pts[0m
+  [36m38[0m  [36m  [:g {:transform "rotate(180 ,0, 0)"}[0m
+  [36m39[0m  [36m   [:polygon {:points (format-points pts)}]][0m
+  [36m40[0m  [36m  [:g {:transform "rotate(270, 0, 0)"}[0m
+  [36m41[0m  [36m   [:polygon {:points (format-points pts)}]]]]]])[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:39  column:44  ----[0m
+
+  [1mUse of undeclared Var conlang.core/pts[0m
+
+  [36m35[0m  [36m         [:polygon {:points (format-points pts)}]][0m
+  [36m36[0m  [36m        [:g {:transform "rotate(90, 0, 0)"}[0m
+  [36m37[0m  [36m         [:polygon {:points (format-points pts)}]][0m
+  [36m38[0m  [36m        [:g {:transform "rotate(180 ,0, 0)"}[0m
+  [33m39[0m  [1m         [:polygon {:points (format-points pts)}]][0m
+  [0m  [0m  [33m                                           ^--- Use of undeclared Var conlang.core/pts[0m
+  [36m40[0m  [36m        [:g {:transform "rotate(270, 0, 0)"}[0m
+  [36m41[0m  [36m         [:polygon {:points (format-points pts)}]]]]]])[0m
+  [36m42[0m  [36m[0m
+  [36m43[0m  [36m[0m
+  [36m44[0m  [36m(defn about-page [][0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:41  column:44  ----[0m
+
+  [1mUse of undeclared Var conlang.core/pts[0m
+
+  [36m37[0m  [36m         [:polygon {:points (format-points pts)}]][0m
+  [36m38[0m  [36m        [:g {:transform "rotate(180 ,0, 0)"}[0m
+  [36m39[0m  [36m         [:polygon {:points (format-points pts)}]][0m
+  [36m40[0m  [36m        [:g {:transform "rotate(270, 0, 0)"}[0m
+  [33m41[0m  [1m         [:polygon {:points (format-points pts)}]]]]]])[0m
+  [0m  [0m  [33m                                           ^--- Use of undeclared Var conlang.core/pts[0m
+  [36m42[0m  [36m[0m
+  [36m43[0m  [36m[0m
+  [36m44[0m  [36m(defn about-page [][0m
+  [36m45[0m  [36m  [:div [:h2 "About conlang"][0m
+  [36m46[0m  [36m   [:div [:a {:href "/"} "go to the home page"]]])[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.338 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.26 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.275 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.293 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.261 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.267 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.269 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.271 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.263 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.259 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.279 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:13  column:34  ----[0m
+
+  [1mUse of undeclared Var conlang.core/click-count[0m
+
+  [36m 9[0m  [36m(def input-word (reagent/atom 0))[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defn counting-component [][0m
+  [36m12[0m  [36m  [:div[0m
+  [33m13[0m  [1m   [:input {:type "text" :value @click-count[0m
+  [0m  [0m  [33m                                 ^--- Use of undeclared Var conlang.core/click-count[0m
+  [36m14[0m  [36m            :on-change #(reset! input-word (-> % .-target .-value))}]])[0m
+  [36m15[0m  [36m[0m
+  [36m16[0m  [36m(defn format-points [points][0m
+  [36m17[0m  [36m  (clojure.string/join " " (map #(clojure.string/join "," %) points)))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.3 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.272 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.262 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.261 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:20  column:1  ----[0m
+
+  [1minput-word at line 10 is being replaced[0m
+
+  [36m17[0m  [36m(defn format-points [points][0m
+  [36m18[0m  [36m  (clojure.string/join " " (map #(clojure.string/join "," %) points)))[0m
+  [36m19[0m  [36m[0m
+  [33m20[0m  [1m(def input-word (reagent/atom (random-points)))[0m
+  [0m  [0m  [33m^--- input-word at line 10 is being replaced[0m
+  [36m21[0m  [36m[0m
+  [36m22[0m  [36m[0m
+  [36m23[0m  [36m(defn random-points [][0m
+  [36m24[0m  [36m  (take (* 1000 (Math/random) (Math/random))[0m
+  [36m25[0m  [36m   (repeatedly[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:20  column:32  ----[0m
+
+  [1mUse of undeclared Var conlang.core/random-points[0m
+
+  [36m17[0m  [36m(defn format-points [points][0m
+  [36m18[0m  [36m  (clojure.string/join " " (map #(clojure.string/join "," %) points)))[0m
+  [36m19[0m  [36m[0m
+  [33m20[0m  [1m(def input-word (reagent/atom (random-points)))[0m
+  [0m  [0m  [33m                               ^--- Use of undeclared Var conlang.core/random-points[0m
+  [36m21[0m  [36m[0m
+  [36m22[0m  [36m[0m
+  [36m23[0m  [36m(defn random-points [][0m
+  [36m24[0m  [36m  (take (* 1000 (Math/random) (Math/random))[0m
+  [36m25[0m  [36m   (repeatedly[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.309 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:20  column:27  ----[0m
+
+  [1mUse of undeclared Var conlang.core/random-points[0m
+
+  [36m17[0m  [36m(defn format-points [points][0m
+  [36m18[0m  [36m  (clojure.string/join " " (map #(clojure.string/join "," %) points)))[0m
+  [36m19[0m  [36m[0m
+  [33m20[0m  [1m(def pints (reagent/atom (random-points)))[0m
+  [0m  [0m  [33m                          ^--- Use of undeclared Var conlang.core/random-points[0m
+  [36m21[0m  [36m[0m
+  [36m22[0m  [36m[0m
+  [36m23[0m  [36m(defn random-points [][0m
+  [36m24[0m  [36m  (take (* 1000 (Math/random) (Math/random))[0m
+  [36m25[0m  [36m   (repeatedly[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.28 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.208 seconds.[0m
+[36m----  Could not Read  src/cljs/conlang/core.cljs   line:17  column:1  ----[0m
+
+  [1mEOF while reading, starting at line 17 and column 1[0m
+
+  [36m15[0m  [36m            :on-change #(reset! input-word (-> % .-target .-value))}]])[0m
+  [36m16[0m  [36m[0m
+  [33m17[0m  [1m(defn format-points [points][0m
+  [0m  [0m  [33m^--- EOF while reading, starting at line 17 and column 1[0m
+  [36m18[0m  [36m  (clojure.string/join " " (map #(clojure.string/join "," %) points))[0m
+
+[36m----  Reader Error : Please see src/cljs/conlang/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.19 seconds.[0m
+[36m----  Could not Read  src/cljs/conlang/core.cljs   line:17  column:1  ----[0m
+
+  [1mEOF while reading, starting at line 17 and column 1[0m
+
+  [36m15[0m  [36m            :on-change #(reset! input-word (-> % .-target .-value))}]])[0m
+  [36m16[0m  [36m[0m
+  [33m17[0m  [1m(defn format-points [points][0m
+  [0m  [0m  [33m^--- EOF while reading, starting at line 17 and column 1[0m
+  [36m18[0m  [36m  (clojure.string/join " " (map #(clojure.string/join "," %) points))[0m
+
+[36m----  Reader Error : Please see src/cljs/conlang/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.276 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.205 seconds.[0m
+[36m----  Could not Read  src/cljs/conlang/core.cljs   line:17  column:1  ----[0m
+
+  [1mEOF while reading, starting at line 17 and column 1[0m
+
+  [36m15[0m  [36m            :on-change #(reset! input-word (-> % .-target .-value))}]])[0m
+  [36m16[0m  [36m[0m
+  [33m17[0m  [1m(defn format-points [points][0m
+  [0m  [0m  [33m^--- EOF while reading, starting at line 17 and column 1[0m
+  [36m18[0m  [36m  (clojure.string/join " " (map #(clojure.string/join "," %) points))[0m
+
+[36m----  Reader Error : Please see src/cljs/conlang/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.26 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.268 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.269 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.207 seconds.[0m
+[36m----  Could not Analyze  src/cljs/conlang/core.cljs   line:29  column:1  ----[0m
+
+  [1mToo many arguments to def at line 29 src/cljs/conlang/core.cljs[0m
+
+  [36m27[0m  [36m(def pts (reagent/atom (random-points)))[0m
+  [36m28[0m  [36m[0m
+  [33m29[0m  [1m(def vib [points][0m
+  [0m  [0m  [33m^--- Too many arguments to def at line 29 src/cljs/conlang/core.cljs[0m
+  [36m30[0m  [36m  (map #(+ % (Math/random)) points))[0m
+  [36m31[0m  [36m[0m
+  [36m32[0m  [36m(defn- update! [ts][0m
+
+[36m----  Analysis Error : Please see src/cljs/conlang/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.264 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:34  column:4  ----[0m
+
+  [1mUse of undeclared Var conlang.core/prinln[0m
+
+  [36m30[0m  [36m  (map #(+ % (Math/random)) points))[0m
+  [36m31[0m  [36m[0m
+  [36m32[0m  [36m(defn- update! [ts][0m
+  [36m33[0m  [36m  (swap! pts vib)[0m
+  [33m34[0m  [1m  (prinln "1")[0m
+  [0m  [0m  [33m   ^--- Use of undeclared Var conlang.core/prinln[0m
+  [36m35[0m  [36m  (. js/window (requestAnimationFrame update!)))[0m
+  [36m36[0m  [36m[0m
+  [36m37[0m  [36m[0m
+  [36m38[0m  [36m(defn home-page [][0m
+  [36m39[0m  [36m   [:div {:class "display"}[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.285 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.265 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.261 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.257 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.264 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.263 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:75  column:3  ----[0m
+
+  [1mWrong number of args (0) passed to cljs.core/update[0m
+
+  [36m71[0m  [36m(defn mount-root [][0m
+  [36m72[0m  [36m  (reagent/render [current-page] (.getElementById js/document "app")))[0m
+  [36m73[0m  [36m[0m
+  [36m74[0m  [36m(defn init! [][0m
+  [33m75[0m  [1m  (update)[0m
+  [0m  [0m  [33m  ^--- Wrong number of args (0) passed to cljs.core/update[0m
+  [36m76[0m  [36m  (accountant/configure-navigation![0m
+  [36m77[0m  [36m    {:nav-handler[0m
+  [36m78[0m  [36m     (fn [path][0m
+  [36m79[0m  [36m       (secretary/dispatch! path))[0m
+  [36m80[0m  [36m     :path-exists?[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.328 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:75  column:3  ----[0m
+
+  [1mWrong number of args (0) passed to conlang.core/update![0m
+
+  [36m71[0m  [36m(defn mount-root [][0m
+  [36m72[0m  [36m  (reagent/render [current-page] (.getElementById js/document "app")))[0m
+  [36m73[0m  [36m[0m
+  [36m74[0m  [36m(defn init! [][0m
+  [33m75[0m  [1m  (update!)[0m
+  [0m  [0m  [33m  ^--- Wrong number of args (0) passed to conlang.core/update![0m
+  [36m76[0m  [36m  (accountant/configure-navigation![0m
+  [36m77[0m  [36m    {:nav-handler[0m
+  [36m78[0m  [36m     (fn [path][0m
+  [36m79[0m  [36m       (secretary/dispatch! path))[0m
+  [36m80[0m  [36m     :path-exists?[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.28 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:32  column:1  ----[0m
+
+  [1mupdate already refers to: cljs.core/update being replaced by: conlang.core/update[0m
+
+  [36m29[0m  [36m(defn vib [points][0m
+  [36m30[0m  [36m  (map #(+ % (Math/random)) points))[0m
+  [36m31[0m  [36m[0m
+  [33m32[0m  [1m(defn update [ts][0m
+  [0m  [0m  [33m^--- update already refers to: cljs.core/update being replaced by: conlang.core/update[0m
+  [36m33[0m  [36m  (swap! pts vib)[0m
+  [36m34[0m  [36m  (.log js/console "Hello, world!")[0m
+  [36m35[0m  [36m  (. js/window (requestAnimationFrame update!)))[0m
+  [36m36[0m  [36m[0m
+  [36m37[0m  [36m(defn home-page [][0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:35  column:39  ----[0m
+
+  [1mUse of undeclared Var conlang.core/update![0m
+
+  [36m32[0m  [36m(defn update [ts][0m
+  [36m33[0m  [36m  (swap! pts vib)[0m
+  [36m34[0m  [36m  (.log js/console "Hello, world!")[0m
+  [33m35[0m  [1m  (. js/window (requestAnimationFrame update!)))[0m
+  [0m  [0m  [33m                                      ^--- Use of undeclared Var conlang.core/update![0m
+  [36m36[0m  [36m[0m
+  [36m37[0m  [36m(defn home-page [][0m
+  [36m38[0m  [36m   [:div {:class "display"}[0m
+  [36m39[0m  [36m    [counting-component][0m
+  [36m40[0m  [36m    [:svg {:width 500 :height 500}[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:75  column:3  ----[0m
+
+  [1mWrong number of args (0) passed to conlang.core/update[0m
+
+  [36m71[0m  [36m(defn mount-root [][0m
+  [36m72[0m  [36m  (reagent/render [current-page] (.getElementById js/document "app")))[0m
+  [36m73[0m  [36m[0m
+  [36m74[0m  [36m(defn init! [][0m
+  [33m75[0m  [1m  (update)[0m
+  [0m  [0m  [33m  ^--- Wrong number of args (0) passed to conlang.core/update[0m
+  [36m76[0m  [36m  (accountant/configure-navigation![0m
+  [36m77[0m  [36m    {:nav-handler[0m
+  [36m78[0m  [36m     (fn [path][0m
+  [36m79[0m  [36m       (secretary/dispatch! path))[0m
+  [36m80[0m  [36m     :path-exists?[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.303 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:32  column:1  ----[0m
+
+  [1mupdate already refers to: cljs.core/update being replaced by: conlang.core/update[0m
+
+  [36m29[0m  [36m(defn vib [points][0m
+  [36m30[0m  [36m  (map #(+ % (Math/random)) points))[0m
+  [36m31[0m  [36m[0m
+  [33m32[0m  [1m(defn update [ts][0m
+  [0m  [0m  [33m^--- update already refers to: cljs.core/update being replaced by: conlang.core/update[0m
+  [36m33[0m  [36m  (swap! pts vib)[0m
+  [36m34[0m  [36m  (.log js/console "Hello, world!")[0m
+  [36m35[0m  [36m  (. js/window (requestAnimationFrame update)))[0m
+  [36m36[0m  [36m[0m
+  [36m37[0m  [36m(defn home-page [][0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:75  column:3  ----[0m
+
+  [1mWrong number of args (0) passed to conlang.core/update[0m
+
+  [36m71[0m  [36m(defn mount-root [][0m
+  [36m72[0m  [36m  (reagent/render [current-page] (.getElementById js/document "app")))[0m
+  [36m73[0m  [36m[0m
+  [36m74[0m  [36m(defn init! [][0m
+  [33m75[0m  [1m  (update)[0m
+  [0m  [0m  [33m  ^--- Wrong number of args (0) passed to conlang.core/update[0m
+  [36m76[0m  [36m  (accountant/configure-navigation![0m
+  [36m77[0m  [36m    {:nav-handler[0m
+  [36m78[0m  [36m     (fn [path][0m
+  [36m79[0m  [36m       (secretary/dispatch! path))[0m
+  [36m80[0m  [36m     :path-exists?[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.29 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:75  column:3  ----[0m
+
+  [1mWrong number of args (0) passed to conlang.core/updater[0m
+
+  [36m71[0m  [36m(defn mount-root [][0m
+  [36m72[0m  [36m  (reagent/render [current-page] (.getElementById js/document "app")))[0m
+  [36m73[0m  [36m[0m
+  [36m74[0m  [36m(defn init! [][0m
+  [33m75[0m  [1m  (updater)[0m
+  [0m  [0m  [33m  ^--- Wrong number of args (0) passed to conlang.core/updater[0m
+  [36m76[0m  [36m  (accountant/configure-navigation![0m
+  [36m77[0m  [36m    {:nav-handler[0m
+  [36m78[0m  [36m     (fn [path][0m
+  [36m79[0m  [36m       (secretary/dispatch! path))[0m
+  [36m80[0m  [36m     :path-exists?[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.275 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.27 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.271 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.257 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.26 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.26 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.262 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.266 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.262 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.302 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.31 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.305 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.314 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.303 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.264 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.265 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.333 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.388 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.307 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.29 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.313 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.323 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.276 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.309 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.288 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.28 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.369 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.381 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.315 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.21 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.369 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.354 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.298 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.317 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.281 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.283 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.313 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.325 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.321 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.329 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.326 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.308 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.306 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.316 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.323 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:37  column:10  ----[0m
+
+  [1mUse of undeclared Var conlang.core/%[0m
+
+  [36m33[0m  [36m       points))[0m
+  [36m34[0m  [36m[0m
+  [36m35[0m  [36m(defn warp [points][0m
+  [36m36[0m  [36m (map (fn [[x y]][0m
+  [33m37[0m  [1m       [(% (inc x) 250)][0m
+  [0m  [0m  [33m         ^--- Use of undeclared Var conlang.core/%[0m
+  [36m38[0m  [36m       [(% (inc y) 250)])[0m
+  [36m39[0m  [36m      points))[0m
+  [36m40[0m  [36m[0m
+  [36m41[0m  [36m(defn updater [][0m
+  [36m42[0m  [36m  (.log js/console "Hello, world!")[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:38  column:10  ----[0m
+
+  [1mUse of undeclared Var conlang.core/%[0m
+
+  [36m35[0m  [36m(defn warp [points][0m
+  [36m36[0m  [36m (map (fn [[x y]][0m
+  [36m37[0m  [36m       [(% (inc x) 250)][0m
+  [33m38[0m  [1m       [(% (inc y) 250)])[0m
+  [0m  [0m  [33m         ^--- Use of undeclared Var conlang.core/%[0m
+  [36m39[0m  [36m      points))[0m
+  [36m40[0m  [36m[0m
+  [36m41[0m  [36m(defn updater [][0m
+  [36m42[0m  [36m  (.log js/console "Hello, world!")[0m
+  [36m43[0m  [36m  (swap! pts warp)[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.331 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.316 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.411 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.349 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.333 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.285 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.321 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.313 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.293 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+Notifyng browser that CSS file changed: resources/public/css/site.css
+Notifyng browser that CSS file changed: resources/public/css/site.css
+Notifyng browser that CSS file changed: resources/public/css/site.css
+Notifyng browser that CSS file changed: resources/public/css/site.css
+Notifyng browser that CSS file changed: resources/public/css/site.css
+Notifyng browser that CSS file changed: resources/public/css/site.css
+Notifyng browser that CSS file changed: resources/public/css/site.css
+Notifyng browser that CSS file changed: resources/public/css/site.css
+Notifyng browser that CSS file changed: resources/public/css/site.css
+Notifyng browser that CSS file changed: resources/public/css/site.css
+Notifyng browser that CSS file changed: resources/public/css/site.css
+Notifyng browser that CSS file changed: resources/public/css/site.css
+Notifyng browser that CSS file changed: resources/public/css/site.css
+Notifyng browser that CSS file changed: resources/public/css/site.css
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.317 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.306 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.275 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:42  column:14  ----[0m
+
+  [1mWrong number of args (0) passed to conlang.core/warp[0m
+
+  [36m38[0m  [36m        (mod (dec y) 250)])[0m
+  [36m39[0m  [36m      points))[0m
+  [36m40[0m  [36m[0m
+  [36m41[0m  [36m(defn updater [][0m
+  [33m42[0m  [1m  (swap! pts (warp))[0m
+  [0m  [0m  [33m             ^--- Wrong number of args (0) passed to conlang.core/warp[0m
+  [36m43[0m  [36m  (. js/window (requestAnimationFrame updater)))[0m
+  [36m44[0m  [36m[0m
+  [36m45[0m  [36m(updater)[0m
+  [36m46[0m  [36m[0m
+  [36m47[0m  [36m(defn home-page [][0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.319 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.296 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.309 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.318 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.31 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.294 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.331 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.353 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.315 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.31 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.391 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.322 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:37  column:15  ----[0m
+
+  [1mUse of undeclared Var conlang.core/dev[0m
+
+  [36m33[0m  [36m       points))[0m
+  [36m34[0m  [36m[0m
+  [36m35[0m  [36m(defn warp [points][0m
+  [36m36[0m  [36m (map (fn [[x y]][0m
+  [33m37[0m  [1m       [(mod (dev x) 250)[0m
+  [0m  [0m  [33m              ^--- Use of undeclared Var conlang.core/dev[0m
+  [36m38[0m  [36m        (mod (dev y) 250)])[0m
+  [36m39[0m  [36m      points))[0m
+  [36m40[0m  [36m[0m
+  [36m41[0m  [36m(defn updater [][0m
+  [36m42[0m  [36m  (swap! pts (comp vib warp))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/conlang/core.cljs   line:38  column:15  ----[0m
+
+  [1mUse of undeclared Var conlang.core/dev[0m
+
+  [36m35[0m  [36m(defn warp [points][0m
+  [36m36[0m  [36m (map (fn [[x y]][0m
+  [36m37[0m  [36m       [(mod (dev x) 250)[0m
+  [33m38[0m  [1m        (mod (dev y) 250)])[0m
+  [0m  [0m  [33m              ^--- Use of undeclared Var conlang.core/dev[0m
+  [36m39[0m  [36m      points))[0m
+  [36m40[0m  [36m[0m
+  [36m41[0m  [36m(defn updater [][0m
+  [36m42[0m  [36m  (swap! pts (comp vib warp))[0m
+  [36m43[0m  [36m  (. js/window (requestAnimationFrame updater)))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/conlang/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.335 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.322 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.31 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.294 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.357 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.317 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.308 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.311 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.291 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.327 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.302 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.309 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.338 seconds.[0m
+notifying browser that file changed:  out/conlang/core.js
