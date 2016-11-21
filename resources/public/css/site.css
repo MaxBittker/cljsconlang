@@ -8,7 +8,9 @@
   color: #333;
   line-height: 1.5em;
 }
-
+html{
+  background-color: #223;
+}
 h1, h2, h3 {
   color: #000;
 }
@@ -37,8 +39,9 @@ svg{
   /*width: 100%;*/
   /*height: 100vw;*/
 }
-polyline{
-  stroke: #432445;
+polyline, polygon{
+  /*stroke: #fff;*/
   stroke-width: 1px;
-  fill: none;
+  fill: #ffe;
+  stroke-linejoin: round;
 }

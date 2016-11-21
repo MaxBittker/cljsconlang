@@ -1,3 +1,4 @@
+
 (ns conlang.core
     (:require [reagent.core :as reagent :refer [atom]]
               [reagent.session :as session]
@@ -9,6 +10,9 @@
 
 (def input-word (reagent/atom "test"))
 
+(def size 200)
+(def half (/ size 2))
+
 (defn counting-component []
   [:div
    [:input {:type "text" :value @input-word
@@ -18,24 +22,30 @@
   (clojure.string/join " " (map #(clojure.string/join "," %) points)))
 
 (defn random-points []
-  (take 700
+  (take 10
    (repeatedly
      (fn []
-       [(dec (*  (Math/random)(Math/random) 250))
-        (dec (*  (Math/random)(Math/random) 250))]))))
+       [(dec (*  (Math/random)(Math/random) half))
+        (dec (*  (Math/random)(Math/random) half))]))))
 
 (def pts (reagent/atom (random-points)))
 
 (defn vib [points]
   (map (fn [[x y]]
-        [(+ x (- 0.5 (Math/random)))
-         (+ y (- 0.5 (Math/random)))])
+        [(+ x (* 4 (- 0.5 (Math/random))))
+         (+ y (* 4 (- 0.5 (Math/random))))])
        points))
 
 (defn warp [points]
  (map (fn [[x y]]
-       [(mod (- x 0.99) 250)
-        (mod (- y 0.99) 250)])
+       [(mod (+ (* x 0.999) half) half)
+        (mod (+ (* y 0.999) half) half)])
+      points))
+
+(defn spin [points]
+  (map (fn [[x y]]
+        [(+ (* x 0.999) (* y 0.001))
+         (+ (* y 0.999) (* x 0.001))])
       points))
 
 (defn updater []
@@ -44,21 +54,25 @@
 
 (updater)
 
-(defn home-page []
-  (let [formated (format-points @pts)]
-   [:div {:class "display"}
-    ; [counting-component]
-    [:svg {:width 500 :height 500}
-      [:g {:transform "translate(250, 250)"}
-        [:g {:transform "rotate(0, 0, 0)"}
-         [:polygon {:points formated}]]
-        [:g {:transform "rotate(90, 0, 0)"}
-         [:polygon {:points formated}]]
-        [:g {:transform "rotate(180 ,0, 0)"}
-         [:polygon {:points formated}]]
-        [:g {:transform "rotate(270, 0, 0)"}
-         [:polygon {:points formated}]]]]]))
+(defn star [formated n]
+    (map
+      (fn [r]
+        [:g {:key r :transform (str "rotate(" r ", 0, 0)")}
+         [:polygon {:points formated}]])
+      (range 0 360 (/ 360 n))))
 
+(defn collection [points n]
+  (let [formated (format-points points)]
+    (map
+      (fn [r]
+        [:svg {:key r :width size :height size}
+          [:g {:transform (str "translate(" half "," half")")}
+            (star @pts r)]])
+      (range 2 11))))
+
+(defn home-page []
+   [:div {:class "display"}
+      (collection @pts 4)])
 
 (defn about-page []
   [:div [:h2 "About conlang"]
