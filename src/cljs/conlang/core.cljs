@@ -22,13 +22,36 @@
   (clojure.string/join " " (map #(clojure.string/join "," %) points)))
 
 (defn random-points []
-  (take 10
+  (take 2
    (repeatedly
      (fn []
        [(dec (*  (Math/random)(Math/random) half))
         (dec (*  (Math/random)(Math/random) half))]))))
 
-(def pts (reagent/atom (random-points)))
+(defn random-movers []
+  (take 3
+   (repeatedly
+     (fn []
+       [[
+          (dec (*  (Math/random)(Math/random) half))
+          (dec (*  (Math/random)(Math/random) half))]
+
+        [
+          (dec (*  (Math/random) 2))
+          (dec (*  (Math/random) 2))]]))))
+
+
+
+; (def pts (reagent/atom (random-points)))
+(def mvrs (reagent/atom (random-movers)))
+
+(defn walk [mvrs]
+  (map (fn [[x y] [vx vy]]
+          [[(+ x (* 10 vx))]
+           (+ y (* 10 vy))
+           [vx
+            vy]])
+       mvrs))
 
 (defn vib [points]
   (map (fn [[x y]]
@@ -49,10 +72,12 @@
       points))
 
 (defn updater []
-  (swap! pts (comp vib warp))
+  (swap! @mvrs (comp walk))
   (. js/window (requestAnimationFrame updater)))
 
-(updater)
+; (updater)
+
+; (swap! @mvrs (comp walk))
 
 (defn star [formated n]
     (map
@@ -67,16 +92,119 @@
       (fn [r]
         [:svg {:key r :width size :height size}
           [:g {:transform (str "translate(" half "," half")")}
-            (star @pts r)]])
+            (star @mvrs r)]])
       (range 2 11))))
 
-(defn home-page []
+(defn star-page []
    [:div {:class "display"}
-      (collection @pts 4)])
+      (collection @mvrs 4)])
+
+(defn add [& vs]
+  (vec (apply map + vs)))
+
+(defn subtract [& vs]
+  (vec (apply map - vs)))
+
+(defn magnitude [v]
+  (Math/sqrt (reduce + (map #(Math/pow % 2) v))))
+
+(defn normalize [v]
+  (let [m (magnitude v)]
+    (vec (map #(/ % m) v))))
+
+(defn multiply [v scalar]
+  (vec (map * (repeat scalar) v)))
+
+(defn distance [a b]
+  (magnitude (subtract a b)))
+
+(defn random-2d []
+ (normalize [(- (rand 2) 1.0) (- (rand 2) 1.0)]))
+
+(def step 2.5)
+
+(defn new-point [points]
+  ((fn [v]
+    (add (multiply (random-2d) step) v))
+   (first points)))
+
+(defn check-point [p points] ;can be improved with skipping
+  (or
+   (some (fn [op] (< (distance op p) step)) points)
+   (> (distance p [half half]) (/ size 2))
+   (< (distance p [half half]) (/ size 6))))
+
+(defn next-checked-point [points history]
+  (let [np (new-point points)]
+    (if (check-point np (concat points history))
+      points
+      (cons np points))))
+
+(defn random-walk [c history]
+    (loop [cnt c
+            points [(rand-nth history)]]
+       (if (zero? cnt)
+          points
+          (recur (dec cnt) (next-checked-point points history)))))
+
+
+; (defn many-walks []
+;   (loop [cnt 50
+;           walks [[[half half]]]]
+;      (if (zero? cnt)
+;         walks
+;         (recur (dec cnt) (cons (random-walk (* cnt cnt) (apply concat walks)) walks)))))
+
+(defn add-walk [walks]
+  (let [newwalk (random-walk 500 (apply concat walks))]
+    (if (= (count newwalk) 1)
+      walks
+      (cons newwalk walks))))
+
+
+(def colony (reagent/atom (add-walk [[[(/ half 2) half]]])))
+
+(defn uploop [cnt]
+  (swap! colony add-walk)
+  ; (js/console.log cnt)
+ (if (zero? cnt)
+  cnt
+  (. js/window (requestAnimationFrame #(uploop (dec cnt))))))
+
+(uploop 1000)
+
+(defn squigles [lines]
+   (print (count (flatten lines)))
+   (map-indexed
+     (fn [i line]
+       [:polyline {:key i :points (format-points line)}])
+    lines))
+
+(defn dots [lines]
+  (map-indexed
+    (fn [i [x y]]
+      [:circle {:key i :cx x :cy y :r "0.7"}])
+    (partition 2 (flatten lines))))
+
+
+; (defn sq-collection []
+;     (map
+;       (fn [r]
+;         [:svg {:key r :width size :height size}
+;             (squigles)])
+;       (range 9)))
+
+
+(defn lines-page []
+  [:div {:class "display"}
+   [:svg { :width size :height size}
+    (squigles @colony)
+    (dots @colony)]])
+
 
 (defn about-page []
-  [:div [:h2 "About conlang"]
-   [:div [:a {:href "/"} "go to the home page"]]])
+  [:div [:h2 "other page"]
+   [:div [:a {:href "/stars"} "go to the star page"]]])
 
 (defn current-page []
   [:div [(session/get :current-page)]])
@@ -84,11 +212,14 @@
 ;; -------------------------
 ;; Routes
 
-(secretary/defroute "/" []
-  (session/put! :current-page #'home-page))
+(secretary/defroute "/stars" []
+  (session/put! :current-page #'star-page))
 
 (secretary/defroute "/about" []
   (session/put! :current-page #'about-page))
+
+(secretary/defroute "/lines" []
+  (session/put! :current-page #'lines-page))
 
 ;; -------------------------
 ;; Initialize app
