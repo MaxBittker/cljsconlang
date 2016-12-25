@@ -121,7 +121,7 @@
 (defn random-2d []
  (normalize [(- (rand 2) 1.0) (- (rand 2) 1.0)]))
 
-(def step 2.5)
+(def step 3)
 
 (defn new-point [points]
   ((fn [v]
@@ -157,12 +157,39 @@
 
 (defn add-walk [walks]
   (let [newwalk (random-walk 500 (apply concat walks))]
-    (if (= (count newwalk) 1)
+    (if (< (count newwalk) 3)
       walks
       (cons newwalk walks))))
 
 
 (def colony (reagent/atom (add-walk [[[(/ half 2) half]]])))
+
+(defn new-grid [n]
+  (vec (take n (repeat (vec (take n (repeat '())))))))
+
+(def spatial (reagent/atom (new-grid 100)))
+
+(def grid-size 10)
+
+(defn grid-loc [[x y] s]
+  [(int (/ x s))
+   (int (/ y s))])
+
+(defn grid-insert [grid p s]
+  (let [loc (grid-loc p s)]
+    (if (get-in grid loc)
+     (assoc-in grid loc
+        (cons p (get-in grid loc)))
+     (throw (Exception. "out of bounds")))))
+
+(defn neighbors-of [p s]
+ (for [dx [-1 0 1] dy [-1 0 1]]
+  (vec (map + [dx dy] (grid-loc p s)))))
+
+(defn get-buckets [grid p s]
+  (mapcat (fn [np] (get-in grid np))
+    (neighbors-of p s)))
+
 
 (defn uploop [cnt]
   (swap! colony add-walk)
@@ -198,8 +225,8 @@
 (defn lines-page []
   [:div {:class "display"}
    [:svg { :width size :height size}
-    (squigles @colony)
-    (dots @colony)]])
+    (squigles @colony)]])
+    ; (dots @colony)]])
 
 
 (defn about-page []
