@@ -32,6 +32,8 @@
   (GET "/about" [] (loading-page))
   (GET "/stars" [] (loading-page))
   (GET "/lines" [] (loading-page))
+  (GET "/code" [] (loading-page))
+
 
   (resources "/")
   (not-found "Not Found"))

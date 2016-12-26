@@ -121,7 +121,41 @@
 (defn random-2d []
  (normalize [(- (rand 2) 1.0) (- (rand 2) 1.0)]))
 
-(def step 3)
+(defn new-grid [n]
+ (vec (take n (repeat (vec (take n (repeat '())))))))
+
+(def step 1.5)
+
+(def tile-size (int (* step 3)))
+
+(def grid-width (inc (int (/ size tile-size))))
+
+(def spatial-grid (reagent/atom (new-grid grid-width)))
+
+
+(defn grid-loc [[x y] s]
+ [(int (/ x s))
+  (int (/ y s))])
+
+(defn grid-insert [grid p s]
+ (let [loc (grid-loc p s)]
+   (if (get-in grid loc)
+     (assoc-in grid loc
+       (cons p (get-in grid loc)))
+     (throw (js/Error. "Out of bounds!")))))
+
+(defn grid-insert-many [grid points s]
+  (reduce (fn [g p] (grid-insert g p s))
+    grid
+    points))
+
+(defn neighbors-of [p s]
+   (for [dx [-1 0 1] dy [-1 0 1]]
+     (vec (map + [dx dy] (grid-loc p s)))))
+
+(defn get-buckets [grid p s]
+ (mapcat (fn [np] (get-in grid np))
+  (neighbors-of p s)))
 
 (defn new-point [points]
   ((fn [v]
@@ -134,9 +168,18 @@
    (> (distance p [half half]) (/ size 2))
    (< (distance p [half half]) (/ size 6))))
 
+(defn fast-check-point [p points]
+  (or
+   (some
+    (fn [op] (< (distance op p) step))
+    (concat points (get-buckets @spatial-grid p tile-size)))
+   (> (distance p [half half]) (/ size 2))
+   (< (distance p [half half]) (/ size 6))))
+
+
 (defn next-checked-point [points history]
   (let [np (new-point points)]
-    (if (check-point np (concat points history))
+    (if (fast-check-point np points)
       points
       (cons np points))))
 
@@ -159,46 +202,25 @@
   (let [newwalk (random-walk 500 (apply concat walks))]
     (if (< (count newwalk) 3)
       walks
-      (cons newwalk walks))))
+      (do
+       (swap! spatial-grid
+        (fn [grid] (grid-insert-many
+                      grid newwalk tile-size)))
+       (cons newwalk walks)))))
 
 
 (def colony (reagent/atom (add-walk [[[(/ half 2) half]]])))
 
-(defn new-grid [n]
-  (vec (take n (repeat (vec (take n (repeat '())))))))
-
-(def spatial (reagent/atom (new-grid 100)))
-
-(def grid-size 10)
-
-(defn grid-loc [[x y] s]
-  [(int (/ x s))
-   (int (/ y s))])
-
-(defn grid-insert [grid p s]
-  (let [loc (grid-loc p s)]
-    (if (get-in grid loc)
-     (assoc-in grid loc
-        (cons p (get-in grid loc)))
-     (throw (Exception. "out of bounds")))))
-
-(defn neighbors-of [p s]
- (for [dx [-1 0 1] dy [-1 0 1]]
-  (vec (map + [dx dy] (grid-loc p s)))))
-
-(defn get-buckets [grid p s]
-  (mapcat (fn [np] (get-in grid np))
-    (neighbors-of p s)))
-
-
 (defn uploop [cnt]
-  (swap! colony add-walk)
-  ; (js/console.log cnt)
+ (swap! colony add-walk)
+ (cond
+  (zero? (mod cnt 100))
+  (print (map count (apply concat @spatial-grid))))
  (if (zero? cnt)
   cnt
   (. js/window (requestAnimationFrame #(uploop (dec cnt))))))
 
-(uploop 1000)
+; (uploop 2000)
 
 (defn squigles [lines]
    (print (count (flatten lines)))
@@ -228,6 +250,10 @@
     (squigles @colony)]])
     ; (dots @colony)]])
 
+(defn code-page []
+  [:div {:class "display"}
+   [:h2 "not much here yet"]
+   [:svg { :width size :height size}]])
 
 (defn about-page []
   [:div [:h2 "other page"]
@@ -247,6 +273,10 @@
 
 (secretary/defroute "/lines" []
   (session/put! :current-page #'lines-page))
+
+(secretary/defroute "/code" []
+  (session/put! :current-page #'code-page))
+
 
 ;; -------------------------
 ;; Initialize app
