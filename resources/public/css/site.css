@@ -36,12 +36,14 @@ a:hover {
 }
 
 .display{
+  margin: 1em;
   display: flex;
+  flex-wrap: wrap;
 }
 
 svg{
   zoom:2;
-  margin: auto;
+  /*margin: auto;*/
   /*width: 100%;*/
   /*height: 100vw;*/
 }

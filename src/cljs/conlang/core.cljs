@@ -250,10 +250,46 @@
     (squigles @colony)]])
     ; (dots @colony)]])
 
+(def grid-points
+   (for [dx (range 3 18 5) dy (range 3 18 5)]
+    [dx dy]))
+
+(defn point-set [n]
+  (set (take n (repeatedly #(rand-nth grid-points)))))
+
+(defn random-connection [points]
+  (vec (take 2 (repeatedly #(rand-nth (vec points))))))
+
+(defn build-glyph [np nl]
+  (let [ps (point-set np)]
+    (take nl (repeatedly #(random-connection ps)))))
+
+(defn glyph [np nl]
+ (map-indexed
+   (fn [i line]
+     (if (= 1 (count (set line)))
+      [:circle {:key i :cx (first (first line)) :cy (second (first line)) :r "1.5"}]
+      [:polyline {:key i :points (format-points line)}]))
+  (build-glyph np nl)))
+
+(defn glyph-page [n]
+  (map-indexed
+    (fn [i g]
+      [:svg {:key i :width 16 :height 16}
+       g])
+    ; (map
+    ;  (fn [[np nl]] (glyph np nl))
+    ;  (for [dx (range 3 11) dy (range 3 11)]
+    ;   [dx dy]))
+    (take n (repeatedly
+              (fn [] (glyph
+                       (+ 3 (rand-int 8))
+                       (+ 3 (rand-int 8))))))))
+
+
 (defn code-page []
   [:div {:class "display"}
-   [:h2 "not much here yet"]
-   [:svg { :width size :height size}]])
+    (glyph-page 666)])
 
 (defn about-page []
   [:div [:h2 "other page"]
