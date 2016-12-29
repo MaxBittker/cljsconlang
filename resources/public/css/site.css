@@ -56,8 +56,7 @@ polygon{
   fill: #444;
   stroke-linejoin: round;
 }
-
-polyline {
+polyline,path {
   stroke-linejoin: round;
   stroke-linecap: round;
   stroke: #fff;

@@ -3,7 +3,10 @@
     (:require [reagent.core :as reagent :refer [atom]]
               [reagent.session :as session]
               [secretary.core :as secretary :include-macros true]
-              [accountant.core :as accountant]))
+              [accountant.core :as accountant]
+              [conlang.single-sans :refer [font-data]]
+              [clojure.string :as string]))
+
 
 ;; -------------------------
 ;; Views
@@ -124,7 +127,7 @@
 (defn new-grid [n]
  (vec (take n (repeat (vec (take n (repeat '())))))))
 
-(def step 1.5)
+(def step 5)
 
 (def tile-size (int (* step 3)))
 
@@ -220,8 +223,8 @@
   cnt
   (. js/window (requestAnimationFrame #(uploop (dec cnt))))))
 
-; (uploop 2000)
-
+; (uploop 1)
+;
 (defn squigles [lines]
    (print (count (flatten lines)))
    (map-indexed
@@ -232,7 +235,7 @@
 (defn dots [lines]
   (map-indexed
     (fn [i [x y]]
-      [:circle {:key i :cx x :cy y :r "0.7"}])
+      [:circle {:key i :cx x :cy y :r "0.6"}])
     (partition 2 (flatten lines))))
 
 
@@ -289,11 +292,39 @@
 
 (defn code-page []
   [:div {:class "display"}
-    (glyph-page 666)])
+    (glyph-page 1560)])
+
 
 (defn about-page []
   [:div [:h2 "other page"]
    [:div [:a {:href "/stars"} "go to the star page"]]])
+
+(defn d-to-points [data-string]
+  (filter (complement empty?)
+    (string/split
+      (string/replace
+        data-string
+        #"L" "")
+     #"M")))
+
+(defn point-list-to-paths [pl]
+  [:g
+   (map-indexed
+     (fn [i s]
+       [:polyline {:key i :points s}])
+    (d-to-points pl))])
+
+(defn alphabet-page []
+  (map-indexed
+    (fn [i d]
+      [:svg {:key i :width 40 :height 40}
+       (point-list-to-paths (:d d))])
+    font-data))
+
+(defn letter-page []
+   [:div {:class "display"}
+    ; [:p (d-to-points (:d (nth font-data 5)))]
+    (alphabet-page)])
 
 (defn current-page []
   [:div [(session/get :current-page)]])
@@ -313,6 +344,8 @@
 (secretary/defroute "/code" []
   (session/put! :current-page #'code-page))
 
+(secretary/defroute "/letters" []
+  (session/put! :current-page #'letter-page))
 
 ;; -------------------------
 ;; Initialize app

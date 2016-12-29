@@ -33,6 +33,7 @@
   (GET "/stars" [] (loading-page))
   (GET "/lines" [] (loading-page))
   (GET "/code" [] (loading-page))
+  (GET "/letters" [] (loading-page))
 
 
   (resources "/")
