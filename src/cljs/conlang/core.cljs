@@ -16,11 +16,6 @@
 (def size 200)
 (def half (/ size 2))
 
-(defn counting-component []
-  [:div
-   [:input {:type "text" :value @input-word
-            :on-change #(reset! input-word (-> % .-target .-value))}]])
-
 (defn format-points [points]
   (clojure.string/join " " (map #(clojure.string/join "," %) points)))
 
@@ -28,21 +23,19 @@
   (take 2
    (repeatedly
      (fn []
-       [(dec (*  (Math/random)(Math/random) half))
-        (dec (*  (Math/random)(Math/random) half))]))))
+       [(dec (*  (Math/random) (Math/random) half))
+        (dec (*  (Math/random) (Math/random) half))]))))
 
 (defn random-movers []
-  (take 3
+  (take 30
    (repeatedly
      (fn []
        [[
           (dec (*  (Math/random)(Math/random) half))
-          (dec (*  (Math/random)(Math/random) half))]
-
-        [
-          (dec (*  (Math/random) 2))
-          (dec (*  (Math/random) 2))]]))))
-
+          (dec (*  (Math/random)(Math/random) half))]]))))
+        ; [
+          ; (dec (*  (Math/random) 2))
+          ; (dec (*  (Math/random) 2))]]))))
 
 
 ; (def pts (reagent/atom (random-points)))
@@ -176,9 +169,8 @@
    (some
     (fn [op] (< (distance op p) step))
     (concat points (get-buckets @spatial-grid p tile-size)))
-   (> (distance p [half half]) (/ size 2))
-   (< (distance p [half half]) (/ size 6))))
-
+   (> (distance p [half half]) (/ size 2))))
+  ;  (< (distance p [half half]) (/ size 6))))
 
 (defn next-checked-point [points history]
   (let [np (new-point points)]
@@ -192,7 +184,6 @@
        (if (zero? cnt)
           points
           (recur (dec cnt) (next-checked-point points history)))))
-
 
 ; (defn many-walks []
 ;   (loop [cnt 50
@@ -216,17 +207,17 @@
 
 (defn uploop [cnt]
  (swap! colony add-walk)
- (cond
-  (zero? (mod cnt 100))
-  (print (map count (apply concat @spatial-grid))))
+ ; (cond
+  ; (zero? (mod cnt 100)))
+  ; (print (map count (apply concat @spatial-grid))))
  (if (zero? cnt)
   cnt
   (. js/window (requestAnimationFrame #(uploop (dec cnt))))))
 
-; (uploop 1)
+(uploop 10000)
 ;
 (defn squigles [lines]
-   (print (count (flatten lines)))
+  ;  (print (count (flatten lines)))
    (map-indexed
      (fn [i line]
        [:polyline {:key i :points (format-points line)}])
@@ -237,7 +228,6 @@
     (fn [i [x y]]
       [:circle {:key i :cx x :cy y :r "0.6"}])
     (partition 2 (flatten lines))))
-
 
 ; (defn sq-collection []
 ;     (map
@@ -299,32 +289,82 @@
   [:div [:h2 "other page"]
    [:div [:a {:href "/stars"} "go to the star page"]]])
 
+(def lscale 5)
+
+(defn normalize-points [[a b]]
+  (if (< 1 (count (range 0 (distance a b) step)))
+    (concat
+      (map
+        (fn [d] (add a
+                  (multiply
+                    (normalize (subtract b a))
+                    d)))
+        (range 0 (distance a b) (/ step (+ 2 lscale))))
+      [b]);end can get lost because of how step works
+    (list a b)))
+
+(defn normalize-line [points]
+  (mapcat
+   normalize-points
+   (partition 2 1 points)))
+
 (defn d-to-points [data-string]
-  (filter (complement empty?)
-    (string/split
-      (string/replace
-        data-string
-        #"L" "")
-     #"M")))
+ (map
+   #(normalize-line
+      (partition 2
+        (map int (string/split % #"[\, ]"))))
+   (filter (complement empty?)
+     (string/split
+       (string/replace
+         data-string
+         #"L" "")
+      #"M"))))
 
 (defn point-list-to-paths [pl]
   [:g
    (map-indexed
-     (fn [i s]
-       [:polyline {:key i :points s}])
-    (d-to-points pl))])
+     (fn [i p]
+      [:g {:key i}
+       [:polyline  {:points (format-points  (vib p))}]
+       [:polyline  {:points (format-points  (vib p))}]]
+      [:polyline  {:key i :points (format-points p)}])
+    pl)])
 
 (defn alphabet-page []
   (map-indexed
     (fn [i d]
       [:svg {:key i :width 40 :height 40}
-       (point-list-to-paths (:d d))])
+       (point-list-to-paths (d-to-points (:d d)))])
     font-data))
 
 (defn letter-page []
    [:div {:class "display"}
-    ; [:p (d-to-points (:d (nth font-data 5)))]
     (alphabet-page)])
+
+(defn translate-points [pl s o]
+  (map
+    (fn [line-points]
+     (map
+      (fn [p] (add (multiply p s) o))
+      line-points))
+   pl))
+
+(def letter-points
+ (translate-points
+  (d-to-points (:d (nth font-data 36)))
+  lscale
+  [(/ size 4.5)
+   (/ size 4.5)]))
+
+(swap! spatial-grid grid-insert-many
+                (apply concat letter-points) tile-size)
+
+(defn negative-letters []
+      [:div {:class "display"}
+       [:svg { :width size :height size}
+        (squigles @colony)]])
+        ; (point-list-to-paths letter-points)]])
+
 
 (defn current-page []
   [:div [(session/get :current-page)]])
@@ -346,6 +386,9 @@
 
 (secretary/defroute "/letters" []
   (session/put! :current-page #'letter-page))
+
+(secretary/defroute "/negative-letters" []
+  (session/put! :current-page #'negative-letters))
 
 ;; -------------------------
 ;; Initialize app

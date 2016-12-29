@@ -53,7 +53,7 @@ circle{
 polygon{
   /*stroke: #fff;*/
   stroke-width: 1px;
-  fill: #444;
+  fill: #fff;
   stroke-linejoin: round;
 }
 polyline,path {
