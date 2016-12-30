@@ -5,6 +5,35 @@
               [secretary.core :as secretary :include-macros true]
               [accountant.core :as accountant]
               [conlang.single-sans :refer [font-data]]
+              [conlang.constants
+                :refer [size
+                        half
+                        step
+                        tile-size
+                        grid-width
+                        lscale]]
+              [conlang.spatial-grid
+                :refer [new-grid
+                        grid-loc
+                        grid-insert
+                        grid-insert-many
+                        neighbors-of
+                        get-buckets]]
+              [conlang.vector
+                :refer [add
+                         subtract
+                         magnitude
+                         normalize
+                         multiply
+                         distance
+                         random-2d]]
+              [conlang.point-utils
+                :refer [format-points
+                        normalize-points
+                        normalize-line
+                        normalize-lines
+                        d-to-points
+                        translate-points]]
               [clojure.string :as string]))
 
 
@@ -13,33 +42,17 @@
 
 (def input-word (reagent/atom "test"))
 
-(def size 200)
-(def half (/ size 2))
-
-(defn format-points [points]
-  (clojure.string/join " " (map #(clojure.string/join "," %) points)))
-
 (defn random-points []
-  (take 2
-   (repeatedly
-     (fn []
-       [(dec (*  (Math/random) (Math/random) half))
-        (dec (*  (Math/random) (Math/random) half))]))))
-
-(defn random-movers []
-  (take 30
-   (repeatedly
-     (fn []
-       [[
-          (dec (*  (Math/random)(Math/random) half))
-          (dec (*  (Math/random)(Math/random) half))]]))))
-        ; [
-          ; (dec (*  (Math/random) 2))
-          ; (dec (*  (Math/random) 2))]]))))
-
+  (doall
+   (take 1
+     (repeatedly
+       (fn []
+         [(dec (*  (Math/random) (Math/random) half))
+          (dec (*  (Math/random) (Math/random) half))])))))
 
 ; (def pts (reagent/atom (random-points)))
-(def mvrs (reagent/atom (random-movers)))
+(def mvrs (reagent/atom (random-points)))
+; (def mvrs (reagent/atom (apply concat (d-to-points (:d (nth font-data 50))))))
 
 (defn walk [mvrs]
   (map (fn [[x y] [vx vy]]
@@ -57,8 +70,8 @@
 
 (defn warp [points]
  (map (fn [[x y]]
-       [(mod (+ (* x 0.999) half) half)
-        (mod (+ (* y 0.999) half) half)])
+       [(mod (+ (- (* x 0.99) 0.01) half) half)
+        (mod (+ (- (* y 0.99) 0.01) half) half)])
       points))
 
 (defn spin [points]
@@ -68,18 +81,16 @@
       points))
 
 (defn updater []
-  (swap! @mvrs (comp walk))
+  (swap! mvrs (comp warp spin))
   (. js/window (requestAnimationFrame updater)))
 
-; (updater)
-
-; (swap! @mvrs (comp walk))
+; (swap! @mvrs vib)
 
 (defn star [formated n]
     (map
       (fn [r]
         [:g {:key r :transform (str "rotate(" r ", 0, 0)")}
-         [:polygon {:points formated}]])
+         [:polyline {:points formated}]])
       (range 0 360 (/ 360 n))))
 
 (defn collection [points n]
@@ -88,70 +99,14 @@
       (fn [r]
         [:svg {:key r :width size :height size}
           [:g {:transform (str "translate(" half "," half")")}
-            (star @mvrs r)]])
+            (star points r)]])
       (range 2 11))))
 
 (defn star-page []
    [:div {:class "display"}
-      (collection @mvrs 4)])
-
-(defn add [& vs]
-  (vec (apply map + vs)))
-
-(defn subtract [& vs]
-  (vec (apply map - vs)))
-
-(defn magnitude [v]
-  (Math/sqrt (reduce + (map #(Math/pow % 2) v))))
-
-(defn normalize [v]
-  (let [m (magnitude v)]
-    (vec (map #(/ % m) v))))
-
-(defn multiply [v scalar]
-  (vec (map * (repeat scalar) v)))
-
-(defn distance [a b]
-  (magnitude (subtract a b)))
-
-(defn random-2d []
- (normalize [(- (rand 2) 1.0) (- (rand 2) 1.0)]))
-
-(defn new-grid [n]
- (vec (take n (repeat (vec (take n (repeat '())))))))
-
-(def step 5)
-
-(def tile-size (int (* step 3)))
-
-(def grid-width (inc (int (/ size tile-size))))
+      (collection (doall @mvrs) 4)])
 
 (def spatial-grid (reagent/atom (new-grid grid-width)))
-
-
-(defn grid-loc [[x y] s]
- [(int (/ x s))
-  (int (/ y s))])
-
-(defn grid-insert [grid p s]
- (let [loc (grid-loc p s)]
-   (if (get-in grid loc)
-     (assoc-in grid loc
-       (cons p (get-in grid loc)))
-     (throw (js/Error. "Out of bounds!")))))
-
-(defn grid-insert-many [grid points s]
-  (reduce (fn [g p] (grid-insert g p s))
-    grid
-    points))
-
-(defn neighbors-of [p s]
-   (for [dx [-1 0 1] dy [-1 0 1]]
-     (vec (map + [dx dy] (grid-loc p s)))))
-
-(defn get-buckets [grid p s]
- (mapcat (fn [np] (get-in grid np))
-  (neighbors-of p s)))
 
 (defn new-point [points]
   ((fn [v]
@@ -214,7 +169,6 @@
   cnt
   (. js/window (requestAnimationFrame #(uploop (dec cnt))))))
 
-(uploop 10000)
 ;
 (defn squigles [lines]
   ;  (print (count (flatten lines)))
@@ -289,37 +243,6 @@
   [:div [:h2 "other page"]
    [:div [:a {:href "/stars"} "go to the star page"]]])
 
-(def lscale 5)
-
-(defn normalize-points [[a b]]
-  (if (< 1 (count (range 0 (distance a b) step)))
-    (concat
-      (map
-        (fn [d] (add a
-                  (multiply
-                    (normalize (subtract b a))
-                    d)))
-        (range 0 (distance a b) (/ step (+ 2 lscale))))
-      [b]);end can get lost because of how step works
-    (list a b)))
-
-(defn normalize-line [points]
-  (mapcat
-   normalize-points
-   (partition 2 1 points)))
-
-(defn d-to-points [data-string]
- (map
-   #(normalize-line
-      (partition 2
-        (map int (string/split % #"[\, ]"))))
-   (filter (complement empty?)
-     (string/split
-       (string/replace
-         data-string
-         #"L" "")
-      #"M"))))
-
 (defn point-list-to-paths [pl]
   [:g
    (map-indexed
@@ -341,23 +264,22 @@
    [:div {:class "display"}
     (alphabet-page)])
 
-(defn translate-points [pl s o]
-  (map
-    (fn [line-points]
-     (map
-      (fn [p] (add (multiply p s) o))
-      line-points))
-   pl))
-
 (def letter-points
- (translate-points
-  (d-to-points (:d (nth font-data 36)))
-  lscale
-  [(/ size 4.5)
-   (/ size 4.5)]))
+ (normalize-lines
+  (translate-points
+    (d-to-points (:d (nth font-data 50)))
+    lscale
+    [(/ size 4.5)
+     (/ size 4.5)])))
 
 (swap! spatial-grid grid-insert-many
                 (apply concat letter-points) tile-size)
+
+(reset! mvrs (apply concat
+                (translate-points
+                  (d-to-points (:d (rand-nth font-data)))
+                  lscale
+                  [-20 -20])))
 
 (defn negative-letters []
       [:div {:class "display"}
@@ -373,6 +295,7 @@
 ;; Routes
 
 (secretary/defroute "/stars" []
+  (updater)
   (session/put! :current-page #'star-page))
 
 (secretary/defroute "/about" []
@@ -388,6 +311,7 @@
   (session/put! :current-page #'letter-page))
 
 (secretary/defroute "/negative-letters" []
+  (uploop 10000)
   (session/put! :current-page #'negative-letters))
 
 ;; -------------------------
