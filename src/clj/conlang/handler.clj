@@ -29,11 +29,12 @@
 
 (defroutes routes
   (GET "/" [] (loading-page))
-  (GET "/about" [] (loading-page))
+  (GET "/*" [] (loading-page))
   (GET "/stars" [] (loading-page))
   (GET "/lines" [] (loading-page))
   (GET "/code" [] (loading-page))
   (GET "/letters" [] (loading-page))
+  (GET "/words" [] (loading-page))
   (GET "/negative-letters" [] (loading-page))
 
 

@@ -62,11 +62,14 @@
             vy]])
        mvrs))
 
-(defn vib [points]
-  (map (fn [[x y]]
-        [(+ x (* 4 (- 0.5 (Math/random))))
-         (+ y (* 4 (- 0.5 (Math/random))))])
-       points))
+(defn vib
+  ([points a]
+   (map (fn [[x y]]
+            [(+ x (* a (- 0.5 (Math/random))))
+             (+ y (* a (- 0.5 (Math/random))))])
+     points))
+ ([points] (vib points 4)))
+
 
 (defn warp [points]
  (map (fn [[x y]]
@@ -76,8 +79,8 @@
 
 (defn spin [points]
   (map (fn [[x y]]
-        [(+ (* x 0.999) (* y 0.001))
-         (+ (* y 0.999) (* x 0.001))])
+        [(+ (* x 0.9) (* y 0.1))
+         (+ (* y 0.9) (* x 0.1))])
       points))
 
 (defn updater []
@@ -272,8 +275,30 @@
     [(/ size 4.5)
      (/ size 4.5)])))
 
+(defn str-to-data [input]
+ (map #(nth font-data
+           (- (.charCodeAt %) 33)
+           {:d "0,0" :o 4})
+  input))
+
+(defn str-to-points [input]
+ (let [dseq (str-to-data input)
+       oseq (reductions + (map :o dseq))]
+   (mapcat
+     (fn [[{d :d o :o} oS]]
+       (normalize-lines
+        (translate-points
+          (d-to-points d)
+          lscale
+          [(* lscale 1.8 (- oS o))
+           (/ size 4.5)])))
+    (map vector dseq oseq))))
+
+(def word-points
+ (str-to-points "sof"))
+
 (swap! spatial-grid grid-insert-many
-                (apply concat letter-points) tile-size)
+                (apply concat word-points) tile-size)
 
 (reset! mvrs (apply concat
                 (translate-points
@@ -286,6 +311,37 @@
        [:svg { :width size :height size}
         (squigles @colony)]])
         ; (point-list-to-paths letter-points)]])
+
+(defn words-page []
+      [:div {:class "display"}
+       [:svg {:width size :height size}
+        (squigles @colony)
+        (point-list-to-paths
+         (map #(vib % 3) (str-to-points "sof")))]])
+
+(def vlines
+  (partition 2
+    (apply concat
+      (map
+        (fn [y] [[y 0] [y size]])
+        (range 10 size 10)))))
+
+(def hlines
+    (map
+      (fn [[[ax ay] [bx by]]]
+       [[ay ax] [by bx]])
+      vlines))
+
+(def grid
+  (apply concat
+    (map vector hlines vlines)))
+
+(defn hatch-page []
+   [:div {:class "display"}
+    [:svg {:width size :height size}
+      (point-list-to-paths (map-indexed
+                                (fn [i p] (vib p (* 3 (Math/cos (/ i 25)))))
+                               (normalize-lines grid)))]])
 
 
 (defn current-page []
@@ -310,9 +366,16 @@
 (secretary/defroute "/letters" []
   (session/put! :current-page #'letter-page))
 
+(secretary/defroute "/words" []
+  (uploop 10000)
+  (session/put! :current-page #'words-page))
+
 (secretary/defroute "/negative-letters" []
   (uploop 10000)
   (session/put! :current-page #'negative-letters))
+
+(secretary/defroute "/hatch" []
+  (session/put! :current-page #'hatch-page))
 
 ;; -------------------------
 ;; Initialize app
