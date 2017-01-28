@@ -61,5 +61,11 @@ polyline,path {
   stroke-linecap: round;
   stroke: #fff;
   stroke-width: 1px;
+  opacity: 0;
   fill: none;
+}
+.thin polyline,path{
+  opacity: 0.3;
+  stroke-width: .3px;
+
 }

@@ -1,40 +1,40 @@
 
 (ns conlang.core
-    (:require [reagent.core :as reagent :refer [atom]]
-              [reagent.session :as session]
-              [secretary.core :as secretary :include-macros true]
-              [accountant.core :as accountant]
-              [conlang.single-sans :refer [font-data]]
-              [conlang.constants
-                :refer [size
-                        half
-                        step
-                        tile-size
-                        grid-width
-                        lscale]]
-              [conlang.spatial-grid
-                :refer [new-grid
-                        grid-loc
-                        grid-insert
-                        grid-insert-many
-                        neighbors-of
-                        get-buckets]]
-              [conlang.vector
-                :refer [add
-                         subtract
-                         magnitude
-                         normalize
-                         multiply
-                         distance
-                         random-2d]]
-              [conlang.point-utils
-                :refer [format-points
-                        normalize-points
-                        normalize-line
-                        normalize-lines
-                        d-to-points
-                        translate-points]]
-              [clojure.string :as string]))
+    (:require
+      [reagent.core :as reagent :refer [atom]]
+      [reagent.session :as session]
+      [secretary.core :as secretary :include-macros true]
+      [accountant.core :as accountant]
+      [conlang.single-sans :refer [font-data]]
+      [clojure.string :as string]
+      [conlang.constants
+        :refer [size
+                half
+                step
+                tile-size
+                grid-width
+                lscale]]
+      [conlang.spatial-grid
+        :refer [new-grid
+                grid-loc
+                grid-insert
+                grid-insert-many
+                neighbors-of
+                get-buckets]]
+      [conlang.vector
+        :refer [add
+                multiply
+                random-2d
+                distance
+                to-polar
+                to-cartesian]]
+      [conlang.point-utils
+        :refer [format-points
+                normalize-points
+                normalize-line
+                normalize-lines
+                d-to-points
+                translate-points]]))
 
 
 ;; -------------------------
@@ -77,11 +77,13 @@
         (mod (+ (- (* y 0.99) 0.01) half) half)])
       points))
 
-(defn spin [points]
-  (map (fn [[x y]]
-        [(+ (* x 0.9) (* y 0.1))
-         (+ (* y 0.9) (* x 0.1))])
+(defn spin
+  ([points a]
+   (map (fn [[x y]]
+            [(+ (* x (- 1 a)) (* y a))
+             (+ (* y (- 1 a)) (* x a))])
       points))
+  ([points] (spin points 0.1)))
 
 (defn updater []
   (swap! mvrs (comp warp spin))
@@ -295,7 +297,7 @@
     (map vector dseq oseq))))
 
 (def word-points
- (str-to-points "sof"))
+ (str-to-points "maze"))
 
 (swap! spatial-grid grid-insert-many
                 (apply concat word-points) tile-size)
@@ -309,15 +311,17 @@
 (defn negative-letters []
       [:div {:class "display"}
        [:svg { :width size :height size}
-        (squigles @colony)]])
-        ; (point-list-to-paths letter-points)]])
+        (squigles @colony)
+        (point-list-to-paths letter-points)]])
 
 (defn words-page []
       [:div {:class "display"}
        [:svg {:width size :height size}
         (squigles @colony)
         (point-list-to-paths
-         (map #(vib % 3) (str-to-points "sof")))]])
+         (str-to-points "moon"))]])
+
+; "marble moon", "mm", "innernette", or "maze"
 
 (def vlines
   (partition 2
@@ -336,13 +340,26 @@
   (apply concat
     (map vector hlines vlines)))
 
-(defn hatch-page []
-   [:div {:class "display"}
-    [:svg {:width size :height size}
-      (point-list-to-paths (map-indexed
-                                (fn [i p] (vib p (* 3 (Math/cos (/ i 25)))))
-                               (normalize-lines grid)))]])
+(defn line-to-polar [points]
+  (map #(to-polar %) points))
 
+(defn line-to-cartesian [points]
+  (map #(to-cartesian %) points))
+
+(defn hatch-page []
+   [:div {:class "display thin"}
+    [:svg {:width size :height size}
+      (point-list-to-paths
+        (apply concat
+          (map
+            #(map-indexed
+              (fn [i p]
+                (line-to-cartesian
+                  (map (fn [[a r]]
+                          [a (/ r a %)])
+                   (line-to-polar p))))
+              (normalize-lines grid))
+           (range 10))))]])
 
 (defn current-page []
   [:div [(session/get :current-page)]])

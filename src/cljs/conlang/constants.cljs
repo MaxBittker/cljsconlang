@@ -11,4 +11,4 @@
 
 (def grid-width (inc (int (/ size tile-size))))
 
-(def lscale 4)
+(def lscale 2)

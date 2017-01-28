@@ -19,5 +19,14 @@
 (defn distance [a b]
   (magnitude (subtract a b)))
 
+(defn to-polar [[x y]]
+  [(Math/atan2 y x)
+   (magnitude [x y])])
+
+(defn to-cartesian [[a r]]
+  (multiply [(Math/cos a)
+             (Math/sin a)]
+   r))
+
 (defn random-2d []
  (normalize [(- (rand 2) 1.0) (- (rand 2) 1.0)]))
