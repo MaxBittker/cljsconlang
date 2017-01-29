@@ -1,4 +1,12 @@
-(ns conlang.vector)
+(ns conlang.vector
+  [:require
+   [conlang.constants
+     :refer [size
+             half
+             step
+             tile-size
+             grid-width
+             lscale]]])
 
 (defn add [& vs]
   (vec (apply map + vs)))
@@ -19,14 +27,15 @@
 (defn distance [a b]
   (magnitude (subtract a b)))
 
-(defn to-polar [[x y]]
-  [(Math/atan2 y x)
-   (magnitude [x y])])
+(defn to-polar [p]
+  (let [[x y] (subtract p [half half])]
+    [(Math/atan2 y x)
+     (magnitude [x y])]))
 
 (defn to-cartesian [[a r]]
-  (multiply [(Math/cos a)
-             (Math/sin a)]
-   r))
+  (let [p (multiply [(Math/cos a) (Math/sin a)]
+            r)]
+    (add p [half half])))
 
 (defn random-2d []
  (normalize [(- (rand 2) 1.0) (- (rand 2) 1.0)]))

@@ -356,8 +356,9 @@
               (fn [i p]
                 (line-to-cartesian
                   (map (fn [[a r]]
-                          [a (/ r a %)])
-                   (line-to-polar p))))
+                          [(* 2 a)
+                           r])
+                   (line-to-polar (vib p 2)))))
               (normalize-lines grid))
            (range 10))))]])
 
