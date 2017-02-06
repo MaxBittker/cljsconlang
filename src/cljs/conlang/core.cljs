@@ -118,7 +118,7 @@
     (add (multiply (random-2d) step) v))
    (first points)))
 
-(defn check-point [p points] ;can be improved with skipping
+(defn check-point [p points]
   (or
    (some (fn [op] (< (distance op p) step)) points)
    (> (distance p [half half]) (/ size 2))
@@ -283,7 +283,7 @@
            {:d "0,0" :o 4})
   input))
 
-(defn str-to-points [input]
+(defn str-to-points [input s]
  (let [dseq (str-to-data input)
        oseq (reductions + (map :o dseq))]
    (mapcat
@@ -291,13 +291,13 @@
        (normalize-lines
         (translate-points
           (d-to-points d)
-          lscale
-          [(* lscale 1.8 (- oS o))
+          s
+          [(* s 1.8 (- oS o))
            (/ size 4.5)])))
     (map vector dseq oseq))))
 
 (def word-points
- (str-to-points "maze"))
+ (str-to-points "maze" lscale))
 
 (swap! spatial-grid grid-insert-many
                 (apply concat word-points) tile-size)
@@ -319,7 +319,7 @@
        [:svg {:width size :height size}
         (squigles @colony)
         (point-list-to-paths
-         (str-to-points "moon"))]])
+         (str-to-points "moon" lscale))]])
 
 ; "marble moon", "mm", "innernette", or "maze"
 
@@ -353,14 +353,102 @@
         (apply concat
           (map
             #(map-indexed
-              (fn [i p]
-                (line-to-cartesian
-                  (map (fn [[a r]]
-                          [(* 2 a)
-                           r])
-                   (line-to-polar (vib p 2)))))
+               (fn [i line]
+                  (map (fn [[x y]]
+                          [(+ x %)
+                           (+ y %)])
+                    (vib line 0.8)))
               (normalize-lines grid))
-           (range 10))))]])
+           (range 7))))]])
+
+(defn make-spiral [n j]
+  (line-to-cartesian
+   (map
+    (fn [i] [i i])
+    (range 0 n j))))
+
+
+(defn make-circle [r]
+ (normalize-line
+   (map
+    (fn [i] [i r])
+    (range 0 (* 2 3.15) 0.1))))
+
+(defn translate-line [pl s o]
+   (map
+    (fn [p] (add (multiply p s) o))
+    pl))
+
+(defn spiral-page []
+  [:div {:class "display thin"}
+   [:svg {:width size :height size}
+    (point-list-to-paths
+        (map
+          (fn [i]
+            (map
+             (fn [[a r]]
+               (let [[x y] (to-cartesian [a r])
+                      amp 1
+                      f 0.5]
+                [(+ x (* amp (Math/cos (* f y))))
+                 (+ y (* amp (Math/sin (* f x))))]))
+             (make-circle i)))
+         (range 0 size 2)))]])
+
+(defn line-glyph [np nl]
+  (map
+    (fn [line]
+      (if (= 1 (count (set line)))
+       (vib (take 20 (repeat (first line))) 2)
+       line))
+   (build-glyph np nl)))
+
+(defn random-letter-stamp []
+  ; (map #(vib % 0.1)
+   (normalize-lines
+    (translate-points
+      (line-glyph
+               (+ 3 (rand-int 8))
+               (+ 3 (rand-int 8)))
+                ;(d-to-points (:d (nth font-data (+ (rand-int 26) 64))))
+      (+ 0.3 (* 4 (Math/random)))
+      [(rand-int (- size 80))
+       (rand-int (- size 80))])))
+
+(defn check-lines [lines grid]
+  (not-any?
+    (fn [point]
+      (or
+       (> (distance point [half half]) (* 0.9 half))
+       (some
+        (fn [op]
+          (< (distance op point) (* 2 step)))
+        (get-buckets grid point tile-size))))
+    (apply concat lines)))
+
+(defn non-overlapping-letters []
+  (loop [grid (new-grid grid-width)
+         letters []
+         cnt 11000]
+   (if (= cnt 0)
+    letters
+    (let [cletter (random-letter-stamp)]
+      (if (check-lines cletter grid)
+        (recur
+         (grid-insert-many grid (apply concat cletter) tile-size)
+         (cons cletter letters)
+         (dec cnt))
+        (recur
+         grid
+         letters
+         (dec cnt)))))))
+
+
+(defn text-page []
+  [:div {:class "display med"}
+   [:svg {:width size :height size}
+    (point-list-to-paths
+      (apply concat (non-overlapping-letters)))]])
 
 (defn current-page []
   [:div [(session/get :current-page)]])
@@ -394,6 +482,12 @@
 
 (secretary/defroute "/hatch" []
   (session/put! :current-page #'hatch-page))
+
+(secretary/defroute "/spiral" []
+  (session/put! :current-page #'spiral-page))
+
+(secretary/defroute "/text" []
+  (session/put! :current-page #'text-page))
 
 ;; -------------------------
 ;; Initialize app
