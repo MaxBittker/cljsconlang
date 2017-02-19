@@ -1,4 +1,3 @@
-
 (ns conlang.core
     (:require
       [reagent.core :as reagent :refer [atom]]
@@ -6,6 +5,7 @@
       [secretary.core :as secretary :include-macros true]
       [accountant.core :as accountant]
       [conlang.single-sans :refer [font-data]]
+      [conlang.font-data :refer [fonts-data]]
       [clojure.string :as string]
       [conlang.constants
         :refer [size
@@ -34,7 +34,8 @@
                 normalize-line
                 normalize-lines
                 d-to-points
-                translate-points]]))
+                translate-points]]
+      [conlang.obj2 :refer [lines-to-2obj]]))
 
 
 ;; -------------------------
@@ -199,7 +200,9 @@
 (defn lines-page []
   [:div {:class "display"}
    [:svg { :width size :height size}
-    (squigles @colony)]])
+    (squigles @colony)]
+   [:pre
+     (lines-to-2obj @colony)]])
     ; (dots @colony)]])
 
 (def grid-points
@@ -263,7 +266,7 @@
     (fn [i d]
       [:svg {:key i :width 40 :height 40}
        (point-list-to-paths (d-to-points (:d d)))])
-    font-data))
+    (apply concat (map #(:chars %) (vals fonts-data)))))
 
 (defn letter-page []
    [:div {:class "display"}
@@ -278,7 +281,7 @@
      (/ size 4.5)])))
 
 (defn str-to-data [input]
- (map #(nth font-data
+ (map #(nth (:chars (:gothicger fonts-data))
            (- (.charCodeAt %) 33)
            {:d "0,0" :o 4})
   input))
@@ -292,12 +295,12 @@
         (translate-points
           (d-to-points d)
           s
-          [(* s 1.8 (- oS o))
-           (/ size 4.5)])))
+          [(* s 1.6 (- oS o))
+           (/ size 2.5)])))
     (map vector dseq oseq))))
 
 (def word-points
- (str-to-points "maze" lscale))
+ (str-to-points "mycelium" lscale))
 
 (swap! spatial-grid grid-insert-many
                 (apply concat word-points) tile-size)
@@ -311,15 +314,14 @@
 (defn negative-letters []
       [:div {:class "display"}
        [:svg { :width size :height size}
-        (squigles @colony)
-        (point-list-to-paths letter-points)]])
+        (squigles @colony)]])
+        ; (point-list-to-paths word-points)]])
 
 (defn words-page []
       [:div {:class "display"}
        [:svg {:width size :height size}
         (squigles @colony)
-        (point-list-to-paths
-         (str-to-points "moon" lscale))]])
+        (point-list-to-paths word-points)]])
 
 ; "marble moon", "mm", "innernette", or "maze"
 
@@ -348,18 +350,20 @@
 
 (defn hatch-page []
    [:div {:class "display thin"}
-    [:svg {:width size :height size}
-      (point-list-to-paths
+    [:pre
+      (lines-to-2obj
+    ; [:svg {:width size :height size}
+      ; (point-list-to-paths
         (apply concat
           (map
             #(map-indexed
                (fn [i line]
                   (map (fn [[x y]]
-                          [(+ x %)
-                           (+ y %)])
-                    (vib line 0.8)))
+                          [(+ x (* % 3 (Math/sin (*  0.1 y))))
+                           (+ y (* % 3 (Math/sin (*  0.1 x))))])
+                    (vib line 0.0)))
               (normalize-lines grid))
-           (range 7))))]])
+           (range 5))))]])
 
 (defn make-spiral [n j]
   (line-to-cartesian
@@ -372,7 +376,7 @@
  (normalize-line
    (map
     (fn [i] [i r])
-    (range 0 (* 2 3.15) 0.1))))
+    (range 0 (* 2 3.15) 0.02))))
 
 (defn translate-line [pl s o]
    (map
@@ -381,25 +385,31 @@
 
 (defn spiral-page []
   [:div {:class "display thin"}
-   [:svg {:width size :height size}
-    (point-list-to-paths
+   [:pre {:width size :height size}
+    (lines-to-2obj
+    ;  [:svg {:width size :height size}
+      ; (point-list-to-paths
         (map
           (fn [i]
             (map
-             (fn [[a r]]
-               (let [[x y] (to-cartesian [a r])
-                      amp 1
-                      f 0.5]
-                [(+ x (* amp (Math/cos (* f y))))
-                 (+ y (* amp (Math/sin (* f x))))]))
-             (make-circle i)))
-         (range 0 size 2)))]])
+             (fn [[x y]]
+               (let [[a r] (to-polar [x y])
+                      amp 2.5
+                      f 1]
+                [(+ x (* amp (Math/cos (* f r a i))))
+                 (+ y (* amp (Math/sin (* f r a i))))]))
+             (make-spiral half 0.002)))
+         (range 0 4)))]])
 
 (defn line-glyph [np nl]
   (map
     (fn [line]
       (if (= 1 (count (set line)))
-       (vib (take 20 (repeat (first line))) 2)
+       (map-indexed
+        (fn [i [x y]]
+          [(+ x (Math/sin (* i 0.9)))
+           (+ y (Math/cos (* i 0.9)))])
+        (take 10 (repeat (first line))))
        line))
    (build-glyph np nl)))
 
@@ -407,13 +417,31 @@
   ; (map #(vib % 0.1)
    (normalize-lines
     (translate-points
-      (line-glyph
-               (+ 3 (rand-int 8))
-               (+ 3 (rand-int 8)))
-                ;(d-to-points (:d (nth font-data (+ (rand-int 26) 64))))
-      (+ 0.3 (* 4 (Math/random)))
-      [(rand-int (- size 80))
-       (rand-int (- size 80))])))
+      ; (line-glyph
+              ;  (+ 3 (rand-int 8))
+              ;  (+ 3 (rand-int 8)
+            ; (d-to-points (:d (rand-nth
+            ;                       (apply concat (map #(:chars %) (vals fonts-data))))))
+            ; (d-to-points (:d (rand-nth (:chars (:astrology fonts-data)))))
+
+          (d-to-points (:d (nth (:chars (:astrology fonts-data))
+                                (rand-nth (concat
+                                             [0]
+                                             (range 2 7)
+                                             (range 9 11)
+                                             [12]
+                                             [14]
+                                             (range 25 32)
+                                             [58]
+                                             (range 60 65)
+                                             (range 90 95))))))
+
+
+
+      ; (+ 0.3 (* 2 (Math/random)))
+      0.5
+      [(rand-int (- size 10))
+       (rand-int (- size 10))])))
 
 (defn check-lines [lines grid]
   (not-any?
@@ -422,14 +450,14 @@
        (> (distance point [half half]) (* 0.9 half))
        (some
         (fn [op]
-          (< (distance op point) (* 2 step)))
+          (< (distance op point) (* 0.6 step)))
         (get-buckets grid point tile-size))))
     (apply concat lines)))
 
 (defn non-overlapping-letters []
   (loop [grid (new-grid grid-width)
          letters []
-         cnt 11000]
+         cnt 14000]
    (if (= cnt 0)
     letters
     (let [cletter (random-letter-stamp)]
@@ -445,10 +473,12 @@
 
 
 (defn text-page []
-  [:div {:class "display med"}
-   [:svg {:width size :height size}
-    (point-list-to-paths
-      (apply concat (non-overlapping-letters)))]])
+  (let [pl (apply concat (non-overlapping-letters))]
+    [:div {:class "display med"}
+     [:svg {:width size :height size}
+      (point-list-to-paths pl)]
+     [:pre (lines-to-2obj pl)]]))
+
 
 (defn current-page []
   [:div [(session/get :current-page)]])
@@ -464,6 +494,7 @@
   (session/put! :current-page #'about-page))
 
 (secretary/defroute "/lines" []
+  (uploop 10000)
   (session/put! :current-page #'lines-page))
 
 (secretary/defroute "/code" []

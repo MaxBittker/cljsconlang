@@ -7,6 +7,9 @@
                                             lscale]]))
 
 
+
+(enable-console-print!)
+
 (defn new-grid [n]
   (vec (take n (repeat (vec (take n (repeat '())))))))
 
@@ -19,7 +22,8 @@
    (if (get-in grid loc)
      (assoc-in grid loc
        (cons p (get-in grid loc)))
-     (throw (js/Error. "Out of bounds!")))))
+    (throw (js/Error. "Out of bounds!")))))
+    ;  (println "out of bound"))))
 
 (defn grid-insert-many [grid points s]
   (reduce (fn [g p] (grid-insert g p s))

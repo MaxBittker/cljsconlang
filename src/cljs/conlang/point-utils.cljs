@@ -28,7 +28,7 @@
                   (multiply
                     (normalize (subtract b a))
                     d)))
-        (range 0 (distance a b) (* 0.5 step)))
+        (range 0 (distance a b) (* 0.4 step)))
       [b]);end can get lost because of how step works
     (list a b)))
 
