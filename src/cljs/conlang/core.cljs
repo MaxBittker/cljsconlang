@@ -200,9 +200,9 @@
 (defn lines-page []
   [:div {:class "display"}
    [:svg { :width size :height size}
-    (squigles @colony)]
-   [:pre
-     (lines-to-2obj @colony)]])
+    (squigles @colony)]])
+  ;  [:pre
+    ;  (lines-to-2obj @colony))]])
     ; (dots @colony)]])
 
 (def grid-points
@@ -330,7 +330,7 @@
     (apply concat
       (map
         (fn [y] [[y 0] [y size]])
-        (range 10 size 10)))))
+        (range 5 size 5)))))
 
 (def hlines
     (map
@@ -350,20 +350,24 @@
 
 (defn hatch-page []
    [:div {:class "display thin"}
-    [:pre
-      (lines-to-2obj
-    ; [:svg {:width size :height size}
-      ; (point-list-to-paths
+    ; [:pre]
+      ; (lines-to-2obj)]
+    [:svg {:width size :height size}
+      (point-list-to-paths
         (apply concat
-          (map
+          (map-indexed
             #(map-indexed
                (fn [i line]
                   (map (fn [[x y]]
-                          [(+ x (* % 3 (Math/sin (*  0.1 y))))
-                           (+ y (* % 3 (Math/sin (*  0.1 x))))])
-                    (vib line 0.0)))
+                          (let [[a r] (to-polar [x y])]
+                            (to-cartesian
+                              [(* (+ a (* 0.25 Math/PI)) 2)
+                               r])))
+                            ; [(+ x (* % 3 (Math/sin (*  0.1 y))))]))
+                            ;  (+ y (* % 3 (Math/sin (*  0.1 x))))]))
+                    (vib line (* 0.4 %))))
               (normalize-lines grid))
-           (range 5))))]])
+           (range 3))))]])
 
 (defn make-spiral [n j]
   (line-to-cartesian
@@ -373,10 +377,11 @@
 
 
 (defn make-circle [r]
- (normalize-line
-   (map
-    (fn [i] [i r])
-    (range 0 (* 2 3.15) 0.02))))
+  (line-to-cartesian
+   (normalize-line
+     (map
+      (fn [i] [i r])
+      (range 0 (* 2 3.15) (* (/ 1 (inc r)) 0.5))))))
 
 (defn translate-line [pl s o]
    (map
@@ -385,21 +390,21 @@
 
 (defn spiral-page []
   [:div {:class "display thin"}
-   [:pre {:width size :height size}
-    (lines-to-2obj
-    ;  [:svg {:width size :height size}
-      ; (point-list-to-paths
+  ;  [:pre {:width size :height size}
+    ; (lines-to-2obj
+     [:svg {:width size :height size}
+      (point-list-to-paths
         (map
           (fn [i]
             (map
              (fn [[x y]]
                (let [[a r] (to-polar [x y])
-                      amp 2.5
-                      f 1]
-                [(+ x (* amp (Math/cos (* f r a i))))
-                 (+ y (* amp (Math/sin (* f r a i))))]))
-             (make-spiral half 0.002)))
-         (range 0 4)))]])
+                      amp (- 8 (* 8 (/ i half) (/ i half) (/ i half)))
+                      f .1]
+                [(+ x (* amp (Math/cos (* f y))))
+                 (+ y (* amp (Math/sin (* f x))))]))
+             (make-circle i)))
+         (range 1 half 1)))]])
 
 (defn line-glyph [np nl]
   (map
@@ -480,6 +485,130 @@
      [:pre (lines-to-2obj pl)]]))
 
 
+(defn thing-field [thing o]
+  (for [x (range (- half) half o) y (range (- half) half o)]
+    (map
+      #(translate-line
+         %
+         1
+         [x y])
+      thing)))
+
+(defn offset-thing-field [thing o]
+  (let [sz (* 0.8 half)]
+    (for [x (range (- sz) sz (* o 0.85)) y (range (- sz) sz o)]
+    ; (for [x (range 0 (* 2 sz) o) y (range 0 (* 2 sz) o)]
+      (map
+        #(vib
+          (translate-line
+           %
+           1
+          ;  [x y]
+           [x (+ y (* o  0.5 (mod (/ x (* o 0.85)) 2)))])
+          0)
+          ; (/ x sz))
+        (thing)))))
+
+; (defn concentric-circles [r stp]
+;   (map
+;    (fn [i] (vib (make-spiral i 0.1) 1))
+;    (range 4 r stp)))
+
+
+(defn ngon [r n]
+  (map
+    #(to-cartesian
+       [(* 2 3.14 (/ % n)) r])
+   (range 0 (inc n))))
+
+
+(defn field-page []
+ (let [pl (apply concat (offset-thing-field #(line-glyph 4 20) 10))]
+   [:div {:class "display thin"}
+    [:svg {:width size :height size}
+     (point-list-to-paths pl)]
+    [:pre (lines-to-2obj pl)]]))
+
+(defn random-circle-point [r]
+  (to-cartesian
+    [(rand 100) r]))
+
+(defn chord [cr]
+ (vib
+   (map
+     (fn [[x y]]
+       (let [[a r] (to-polar [x y])
+             amp (- 4 (* 4 (/ r half) (/ r half) (/ r half) (/ r half)))
+             f 0.5]
+        ; (to-cartesian)
+          ; [(+ a (* 0.003 (/ half r) (/ half r)))
+          ;  r)
+        [(+ x (* amp (Math/sin (* f y))))
+         y]));  (+ y (* amp (Math/cos (* f x))))]))
+     (normalize-line
+         [(random-circle-point cr)
+          (random-circle-point cr)]))
+  0.5))
+
+(defn marble-page []
+ (let [pl (take 1000 (repeatedly #(chord half)))]
+   [:div {:class "display thin"}
+    [:svg {:width size :height size}
+      (point-list-to-paths pl)]]))
+    ; [:pre (lines-to-2obj pl)]]))
+
+(defn shading []
+  (for [x (range 0 size 30) y (range size)]
+   (vib (normalize-line [[y y] [x y]])
+    (/ y size 0.4))))
+
+(defn shade-page []
+ (let [pl (shading)]
+   [:div {:class "display thin"}
+    [:svg {:width size :height size}
+      (point-list-to-paths pl)]]))
+    ; [:pre (lines-to-2obj pl)]]))
+
+
+(defn circle-width [h r]
+  (Math/sqrt
+    (- (* r r) (* h h))))
+
+(defn hatched-circle [r a]
+    (map
+      (fn [h]
+       (map
+         (fn [[ang rad]]
+            (to-cartesian [(+ ang a) rad]))
+         (line-to-polar
+           (map
+             (fn [[x y]] [(+ half x) (+ half y)])
+            [[(circle-width h r) h]
+             [(- (circle-width h r)) h]]))))
+     (range (- r) r)))
+
+(defn hatch-composition []
+  (let [edge  (- size 40)
+        ehalf  (/ edge 2)]
+    (take 10
+      (repeatedly
+        (fn []
+          (translate-points
+           (hatched-circle 30 (rand 100))
+           1
+           [(- ehalf (rand-int edge))
+            (- ehalf (rand-int edge))]))))))
+
+(defn overlap-page []
+ ; (let [pl (apply concat (hatch-composition))])
+ (let [pl (apply concat (offset-thing-field #(hatched-circle 9 (rand 100)) 10))]
+   [:div {:class "display thin"}
+    [:svg {:width size :height size}
+      (point-list-to-paths pl)]
+    [:pre (lines-to-2obj pl)]]))
+
+
+
 (defn current-page []
   [:div [(session/get :current-page)]])
 
@@ -519,6 +648,18 @@
 
 (secretary/defroute "/text" []
   (session/put! :current-page #'text-page))
+
+(secretary/defroute "/field" []
+  (session/put! :current-page #'field-page))
+
+(secretary/defroute "/shade" []
+  (session/put! :current-page #'shade-page))
+
+(secretary/defroute "/marble" []
+  (session/put! :current-page #'marble-page))
+
+(secretary/defroute "/overlap" []
+  (session/put! :current-page #'overlap-page))
 
 ;; -------------------------
 ;; Initialize app

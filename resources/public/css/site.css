@@ -41,22 +41,22 @@ a:hover {
   flex-wrap: wrap;
 }
 
-svg{
+.display > svg{
   zoom:2;
   /*margin: auto;*/
   /*width: 100%;*/
   /*height: 100vw;*/
 }
-circle{
+.display circle{
   fill: #ffe;
 }
-polygon{
+.display polygon{
   /*stroke: #fff;*/
   stroke-width: 1px;
   fill: #fff;
   stroke-linejoin: round;
 }
-polyline,path {
+.display polyline,path {
   stroke-linejoin: round;
   stroke-linecap: round;
   stroke: #fff;
