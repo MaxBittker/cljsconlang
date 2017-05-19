@@ -5,6 +5,7 @@
       [secretary.core :as secretary :include-macros true]
       [accountant.core :as accountant]
       [conlang.single-sans :refer [font-data]]
+      [conlang.skull-data :refer [skull-data]]
       [conlang.font-data :refer [fonts-data]]
       [clojure.string :as string]
       [conlang.constants
@@ -26,6 +27,7 @@
                 multiply
                 random-2d
                 distance
+                normalize
                 to-polar
                 to-cartesian]]
       [conlang.point-utils
@@ -114,9 +116,21 @@
 
 (def spatial-grid (reagent/atom (new-grid grid-width)))
 
+(def step-list
+  [
+    [1 0]
+    [-1 0]
+    [0 1]
+    [0 -1]
+    [1 1]
+    [-1 -1]
+    [-1 1]
+    [1 -1]])
+
 (defn new-point [points]
   ((fn [v]
-    (add (multiply (random-2d) step) v))
+    ; (add (multiply (random-2d) step) v)
+    (add (multiply (normalize (rand-nth step-list)) (* step 1.1)) v))
    (first points)))
 
 (defn check-point [p points]
@@ -448,21 +462,38 @@
       [(rand-int (- size 10))
        (rand-int (- size 10))])))
 
+
+(defn sketch-to-points [data]
+ (map
+   (fn [[xs ys ts]]
+     (map vector xs ys))
+   (:drawing data)))
+
+(defn random-skull-stamp []
+ ; (map #(vib % 0.1)
+ (normalize-lines
+   (translate-points
+     (sketch-to-points (rand-nth skull-data))
+     0.05
+     [(rand-int (- size 10))
+      (rand-int (- size 10))])))
+
+
 (defn check-lines [lines grid]
   (not-any?
     (fn [point]
-      (or
-       (> (distance point [half half]) (* 0.9 half))
+      ; (or
+      ;  (> (distance point [half half]) (* 0.9 half))
        (some
         (fn [op]
           (< (distance op point) (* 0.6 step)))
-        (get-buckets grid point tile-size))))
+        (get-buckets grid point tile-size)))
     (apply concat lines)))
 
 (defn non-overlapping-letters []
   (loop [grid (new-grid grid-width)
          letters []
-         cnt 14000]
+         cnt 50]
    (if (= cnt 0)
     letters
     (let [cletter (random-letter-stamp)]
@@ -476,6 +507,22 @@
          letters
          (dec cnt)))))))
 
+(defn non-overlapping-skulls []
+ (loop [grid (new-grid grid-width)
+        letters []
+        cnt 3500]
+  (if (= cnt 0)
+   letters
+   (let [cletter (random-skull-stamp)]
+     (if (check-lines cletter grid)
+       (recur
+        (grid-insert-many grid (apply concat cletter) tile-size)
+        (cons cletter letters)
+        (dec cnt))
+       (recur
+        grid
+        letters
+        (dec cnt)))))))
 
 (defn text-page []
   (let [pl (apply concat (non-overlapping-letters))]
@@ -483,6 +530,16 @@
      [:svg {:width size :height size}
       (point-list-to-paths pl)]
      [:pre (lines-to-2obj pl)]]))
+
+
+(defn draws-page []
+  (let [pl (apply concat (non-overlapping-skulls))]
+  ; (let [pl (sketch-to-points (rand-nth skull-data))]
+   [:div {:class "display med"}
+    [:svg {:width size :height size}
+     (point-list-to-paths pl)]]))
+    ; [:pre pl]]))
+
 
 
 (defn thing-field [thing o]
@@ -523,8 +580,14 @@
 
 
 (defn field-page []
- (let [pl (apply concat (offset-thing-field #(line-glyph 4 20) 10))]
-   [:div {:class "display thin"}
+ (let [pl (apply concat (offset-thing-field
+                             #(translate-points
+                               (sketch-to-points (rand-nth skull-data))
+                               0.085
+                               [half half])
+                             20))]
+  ;  #(line-glyph 4 20) 10
+   [:div {:class "display med"}
     [:svg {:width size :height size}
      (point-list-to-paths pl)]
     [:pre (lines-to-2obj pl)]]))
@@ -660,6 +723,9 @@
 
 (secretary/defroute "/overlap" []
   (session/put! :current-page #'overlap-page))
+
+(secretary/defroute "/draws" []
+  (session/put! :current-page #'draws-page))
 
 ;; -------------------------
 ;; Initialize app
