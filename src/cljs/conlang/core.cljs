@@ -6,6 +6,8 @@
       [accountant.core :as accountant]
       [conlang.single-sans :refer [font-data]]
       [conlang.skull-data :refer [skull-data]]
+      [conlang.eye-data :refer [eye-data]]
+      [conlang.face-data :refer [face-data]]
       [conlang.font-data :refer [fonts-data]]
       [clojure.string :as string]
       [conlang.constants
@@ -21,13 +23,18 @@
                 grid-insert
                 grid-insert-many
                 neighbors-of
-                get-buckets]]
+                get-buckets
+                view-grid]]
       [conlang.vector
         :refer [add
                 multiply
                 random-2d
                 distance
+                orthog
                 normalize
+                subtract
+                magnitude
+                cross-product
                 to-polar
                 to-cartesian]]
       [conlang.point-utils
@@ -36,14 +43,16 @@
                 normalize-line
                 normalize-lines
                 d-to-points
-                translate-points]]
+                translate-points
+                close-loop
+                close-loops]]
       [conlang.obj2 :refer [lines-to-2obj]]))
 
 
 ;; -------------------------
 ;; Views
 
-(def input-word (reagent/atom "test"))
+(def tick (reagent/atom 0))
 
 (defn random-points []
   (doall
@@ -180,14 +189,23 @@
 
 (def colony (reagent/atom (add-walk [[[(/ half 2) half]]])))
 
+(defn redraw [cnt]
+  (swap! tick inc)
+  (if (zero? cnt)
+   cnt
+   (. js/window (requestAnimationFrame #(redraw (dec cnt))))))
+
 (defn uploop [cnt]
  (swap! colony add-walk)
- ; (cond
-  ; (zero? (mod cnt 100)))
-  ; (print (map count (apply concat @spatial-grid))))
  (if (zero? cnt)
   cnt
   (. js/window (requestAnimationFrame #(uploop (dec cnt))))))
+
+(defn update-loop [update-fn cnt]
+ (update-fn cnt)
+ (if (zero? cnt)
+  cnt
+  (. js/window (requestAnimationFrame #(update-loop update-fn (dec cnt))))))
 
 ;
 (defn squigles [lines]
@@ -270,10 +288,23 @@
    (map-indexed
      (fn [i p]
       [:g {:key i}
-       [:polyline  {:points (format-points  (vib p))}]
-       [:polyline  {:points (format-points  (vib p))}]]
-      [:polyline  {:key i :points (format-points p)}])
+      ;  [:polyline  {:points (format-points  (vib p))}]
+      ;  [:polygon  {:points (format-points  (vib p))}]]
+        [:polyline  {:key i :points (format-points p)}]])
     pl)])
+
+
+(defn point-list-to-poly [pl]
+  [:g
+   (map-indexed
+     (fn [i p]
+      [:g {:key i}
+      ;  [:polyline  {:points (format-points  (vib p))}]
+      ;  [:polygon  {:points (format-points  (vib p))}]]
+        [:polygon  {:key i :points (format-points p)}]])
+    pl)])
+; (defn point-list-to-poly-paths [pl])
+  ; (point-list-to-paths (pl)))
 
 (defn alphabet-page []
   (map-indexed
@@ -316,8 +347,8 @@
 (def word-points
  (str-to-points "mycelium" lscale))
 
-(swap! spatial-grid grid-insert-many
-                (apply concat word-points) tile-size)
+; (swap! spatial-grid grid-insert-many
+                ; (apply concat word-points) tile-size))
 
 (reset! mvrs (apply concat
                 (translate-points
@@ -390,12 +421,14 @@
     (range 0 n j))))
 
 
-(defn make-circle [r]
-  (line-to-cartesian
-   (normalize-line
-     (map
-      (fn [i] [i r])
-      (range 0 (* 2 3.15) (* (/ 1 (inc r)) 0.5))))))
+(defn make-circle
+  ([r] (make-circle r 0.5))
+  ([r s]
+   (line-to-cartesian
+     (normalize-line
+       (map
+        (fn [i] [i r])
+        (range 0 (* 2 3.15) (* (/ 1 (inc r)) s)))))))
 
 (defn translate-line [pl s o]
    (map
@@ -473,7 +506,7 @@
  ; (map #(vib % 0.1)
  (normalize-lines
    (translate-points
-     (sketch-to-points (rand-nth skull-data))
+     (sketch-to-points (rand-nth face-data))
      0.05
      [(rand-int (- size 10))
       (rand-int (- size 10))])))
@@ -510,7 +543,7 @@
 (defn non-overlapping-skulls []
  (loop [grid (new-grid grid-width)
         letters []
-        cnt 3500]
+        cnt 4000]
   (if (= cnt 0)
    letters
    (let [cletter (random-skull-stamp)]
@@ -551,20 +584,25 @@
          [x y])
       thing)))
 
+(def skulls
+  (map
+    #(sketch-to-points (rand-nth face-data))
+   (range 1000)))
+
 (defn offset-thing-field [thing o]
   (let [sz (* 0.8 half)]
     (for [x (range (- sz) sz (* o 0.85)) y (range (- sz) sz o)]
     ; (for [x (range 0 (* 2 sz) o) y (range 0 (* 2 sz) o)]
-      (map
-        #(vib
-          (translate-line
-           %
-           1
-          ;  [x y]
-           [x (+ y (* o  0.5 (mod (/ x (* o 0.85)) 2)))])
-          0)
-          ; (/ x sz))
-        (thing)))))
+        (map
+          #(vib
+            (translate-line
+             %
+             0.08
+             [(+ x half)
+              (+ y half (* o  0.5 (mod (/ x (* o 0.85)) 2)))])
+            1)
+            ; (/ x sz))
+          (nth skulls (int (+ @tick (* 0.001 (+ x y) (+ x y)))))))))
 
 ; (defn concentric-circles [r stp]
 ;   (map
@@ -582,13 +620,13 @@
 (defn field-page []
  (let [pl (apply concat (offset-thing-field
                              #(translate-points
-                               (sketch-to-points (rand-nth skull-data))
-                               0.085
+                               (sketch-to-points (rand-nth face-data))
+                               0.1
                                [half half])
-                             20))]
+                             25))]
   ;  #(line-glyph 4 20) 10
-   [:div {:class "display med"}
-    [:svg {:width size :height size}
+   [:div {:class "display thin"}
+    [:svg {:width size :height size :class @tick}
      (point-list-to-paths pl)]
     [:pre (lines-to-2obj pl)]]))
 
@@ -670,6 +708,97 @@
       (point-list-to-paths pl)]
     [:pre (lines-to-2obj pl)]]))
 
+(def archive-piles
+  (reagent/atom []))
+
+(def pile-points
+   (reagent/atom
+     (line-to-polar (make-circle 10 0.3))))
+
+(defn get-closest [neighbors origin]
+  (reduce
+    (fn [a b]
+      (if (<
+            (magnitude (subtract a origin))
+            (magnitude (subtract b origin)))
+       a b))
+    neighbors))
+
+(defn repel [self neighbor]
+    (let [d (subtract neighbor self)]
+      (if (< (magnitude d) 2)
+        [0 0]
+        d)))
+
+(defn sum-forces [self neighbors]
+  (let [summed
+        (apply add
+          (map
+           #(repel self %)
+           neighbors))]
+   (add
+     (normalize summed)
+     (normalize (subtract self [0 0])))))
+
+(defn add-curve [points]
+  (let [base (last points)
+        [ba br] base
+        cartbase (to-cartesian base)]
+    (swap! spatial-grid
+      grid-insert cartbase tile-size)
+    (let [nbors (get-buckets @spatial-grid cartbase tile-size)
+          new (add
+                cartbase
+                (sum-forces cartbase nbors))
+          new2 (add cartbase [(rand) (rand)])]
+        (conj points
+          (to-polar
+            (if (js/isNaN (first new))
+             new2
+             new))))))
+
+(defn field [[a r]]
+  (let [[x y] (to-cartesian [a r])]
+    (*
+      (Math/sin x)
+      (Math/cos y))))
+
+(defn soften [points n]
+  (map
+    (fn [[a b c]]
+      (to-polar (multiply
+                    (add a (multiply b n) c)
+                    (/ 1 (+ n 2)))))
+   (partition 3 1
+     (concat [(last points)] points [(first points)]))))
+
+(defn add-scale [points]
+  (map
+    (fn [[a r]]
+       [(+ a (* 0.000 (rand)))
+        (+ r
+          (rand))])
+          ; (* 0.8 (field [a r]))
+   (soften (line-to-cartesian points) 3)))
+
+
+(defn update-pile [t]
+  ; (print @pile-points)
+  (cond (zero? (mod t 2))
+    (swap! archive-piles conj
+      (line-to-cartesian @pile-points)))
+  (swap! pile-points add-scale))
+
+(defn pile-page []
+ (let [pl (conj @archive-piles
+            (line-to-cartesian @pile-points))]
+   [:div {:class "display thin"}
+    [:svg {:width size :height size}
+      (point-list-to-paths pl)]
+    [:pre (lines-to-2obj pl)]]))
+
+      ; (point-list-to-paths grid-vis)]]))
+
 
 
 (defn current-page []
@@ -713,6 +842,7 @@
   (session/put! :current-page #'text-page))
 
 (secretary/defroute "/field" []
+  (redraw 10000)
   (session/put! :current-page #'field-page))
 
 (secretary/defroute "/shade" []
@@ -726,6 +856,10 @@
 
 (secretary/defroute "/draws" []
   (session/put! :current-page #'draws-page))
+
+(secretary/defroute "/pile" []
+  (update-loop update-pile 10000)
+  (session/put! :current-page #'pile-page))
 
 ;; -------------------------
 ;; Initialize app

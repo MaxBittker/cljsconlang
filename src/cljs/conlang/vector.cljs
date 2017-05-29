@@ -24,6 +24,15 @@
 (defn multiply [v scalar]
   (vec (map * (repeat scalar) v)))
 
+(defn cross-product [[ax ay] [bx by]]
+  (-
+   (* ax by)
+   (* ay bx)))
+
+(defn orthog [[x y]]
+  (normalize
+    (multiply [y x] -1)))
+
 (defn distance [a b]
   (magnitude (subtract a b)))
 

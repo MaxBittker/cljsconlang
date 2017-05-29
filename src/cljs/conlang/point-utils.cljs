@@ -60,3 +60,11 @@
       (fn [p] (add (multiply p s) o))
       line-points))
    pl))
+
+(defn close-loop [pl]
+  (conj (vec pl) (first pl)))
+
+(defn close-loops [ll]
+  (map
+    close-loop)
+  ll)

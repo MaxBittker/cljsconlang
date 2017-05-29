@@ -1,12 +1,19 @@
 (ns conlang.spatial-grid
-  (:require [conlang.constants :refer [size
-                                            half
-                                            step
-                                            tile-size
-                                            grid-width
-                                            lscale]]))
-
-
+  (:require [conlang.constants
+                :refer [size
+                          half
+                          step
+                          tile-size
+                          grid-width
+                          lscale]]
+            [conlang.vector
+              :refer [add
+                      multiply
+                      random-2d
+                      distance
+                      normalize
+                      to-polar
+                      to-cartesian]]))
 
 (enable-console-print!)
 
@@ -37,3 +44,14 @@
 (defn get-buckets [grid p s]
  (mapcat (fn [np] (get-in grid np))
   (neighbors-of p s)))
+
+(defn view-grid [grid s]
+  (map-indexed
+    (fn [x row]
+      (map-indexed
+        (fn [y val]
+         (neighbors-of [x y] s))
+
+        ; x))
+       row))
+   grid))
