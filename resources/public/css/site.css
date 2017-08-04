@@ -73,3 +73,9 @@ a:hover {
   opacity: 0.3;
   stroke-width: .3px;
 }
+.hollow polyline,path{
+  fill: white;
+  opacity: 0.1;
+  /*stroke: black;*/
+  /*stroke-dasharray: 1, 2;*/
+}

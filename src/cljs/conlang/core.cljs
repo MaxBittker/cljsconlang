@@ -31,6 +31,7 @@
                 random-2d
                 distance
                 orthog
+                nrand
                 normalize
                 subtract
                 magnitude
@@ -43,7 +44,9 @@
                 normalize-line
                 normalize-lines
                 d-to-points
+                prune-line
                 translate-points
+                translate-line
                 close-loop
                 close-loops]]
       [conlang.obj2 :refer [lines-to-2obj]]))
@@ -430,11 +433,6 @@
         (fn [i] [i r])
         (range 0 (* 2 3.15) (* (/ 1 (inc r)) s)))))))
 
-(defn translate-line [pl s o]
-   (map
-    (fn [p] (add (multiply p s) o))
-    pl))
-
 (defn spiral-page []
   [:div {:class "display thin"}
   ;  [:pre {:width size :height size}
@@ -713,7 +711,13 @@
 
 (def pile-points
    (reagent/atom
-     (line-to-polar (make-circle 10 0.3))))
+      ; (line-to-polar (make-circle half 5))
+     (line-to-polar
+      (translate-line
+        (normalize-line
+          (ngon 90 4))
+            ; (+ 4 (rand-int 3))))
+        [0 0]))))
 
 (defn get-closest [neighbors origin]
   (reduce
@@ -740,23 +744,6 @@
      (normalize summed)
      (normalize (subtract self [0 0])))))
 
-(defn add-curve [points]
-  (let [base (last points)
-        [ba br] base
-        cartbase (to-cartesian base)]
-    (swap! spatial-grid
-      grid-insert cartbase tile-size)
-    (let [nbors (get-buckets @spatial-grid cartbase tile-size)
-          new (add
-                cartbase
-                (sum-forces cartbase nbors))
-          new2 (add cartbase [(rand) (rand)])]
-        (conj points
-          (to-polar
-            (if (js/isNaN (first new))
-             new2
-             new))))))
-
 (defn field [[a r]]
   (let [[x y] (to-cartesian [a r])]
     (*
@@ -767,7 +754,7 @@
   (map
     (fn [[a b c]]
       (to-polar (multiply
-                    (add a (multiply b n) c)
+                    (add a (multiply b n) c [0 0])
                     (/ 1 (+ n 2)))))
    (partition 3 1
      (concat [(last points)] points [(first points)]))))
@@ -775,30 +762,85 @@
 (defn add-scale [points]
   (map
     (fn [[a r]]
-       [(+ a (* 0.000 (rand)))
-        (+ r
-          (rand))])
+       [(+ a (* 0.001 a (rand)) 0.004)
+        (- r 0.1)])
+          ; (* 0.000 r))])
           ; (* 0.8 (field [a r]))
-   (soften (line-to-cartesian points) 3)))
-
+   (soften
+    ; (normalize-line (line-to-cartesian points)
+     (translate-line
+      (vib
+        (prune-line (line-to-cartesian points) 1)
+        1)
+      [0 0])
+    5)))
+    ; points)))
 
 (defn update-pile [t]
   ; (print @pile-points)
-  (cond (zero? (mod t 2))
+  (cond (zero? (mod t 3))
     (swap! archive-piles conj
-      (line-to-cartesian @pile-points)))
+      (close-loop (line-to-cartesian @pile-points))))
+  (print (count @pile-points))
   (swap! pile-points add-scale))
 
 (defn pile-page []
- (let [pl (conj @archive-piles
+ (let [pl (conj (rest @archive-piles)
             (line-to-cartesian @pile-points))]
    [:div {:class "display thin"}
     [:svg {:width size :height size}
       (point-list-to-paths pl)]
-    [:pre (lines-to-2obj pl)]]))
+    (cond (> (count @archive-piles) 100)
+     [:pre (lines-to-2obj (rest @archive-piles))])]))
 
       ; (point-list-to-paths grid-vis)]]))
 
+(def sol-points
+   (reagent/atom
+      [[half half] [half half] [half half]
+        (add
+          [half half]
+          [(nrand) (nrand)])]))
+
+(defn rotate [[x y] a]
+  [
+   (- (* x (Math/cos a))
+      (* y (Math/sin a)))
+   (+ (* x (Math/sin a))
+      (* y (Math/cos a)))])
+
+(defn grow-squig [points]
+  (let [[sl l] (take-last 2 points)
+         dir (normalize (subtract sl l))
+         rotdir (normalize (rotate dir (+ 2.5 (rand 1.5))))
+         new-dir (multiply rotdir 5)
+         pull (multiply
+                ; (map #(Math/pow % 0.01)
+                  (subtract [half half] l)
+                0.01)
+         push (if (< (magnitude pull) 0.7)
+                (multiply pull -1.5)
+                [0 0])
+         new (add l new-dir pull push)]
+    ; (print (magnitude pull))
+    (conj points new)))
+
+
+(defn update-sol [t]
+  (swap! sol-points grow-squig))
+
+(defn sol-page []
+ (let [pl @sol-points]
+   [:div {:class "display hollow"}
+    ; [:pre (str pl)]]))
+    [:svg {:width size :height size}
+      ; (point-list-to-paths [pl])
+      (point-list-to-paths (partition 6 3 pl))]]))
+
+    ; (cond (> (count @archive-piles) 100)
+    ;  [:pre (lines-to-2obj (rest @archive-piles))]]]))))
+
+      ; (point-list-to-paths grid-vis)]]))
 
 
 (defn current-page []
@@ -858,8 +900,13 @@
   (session/put! :current-page #'draws-page))
 
 (secretary/defroute "/pile" []
-  (update-loop update-pile 10000)
+  (update-loop update-pile 1520)
   (session/put! :current-page #'pile-page))
+
+(secretary/defroute "/sol-squig" []
+  (update-loop update-sol 152000)
+  (session/put! :current-page #'sol-page))
+
 
 ;; -------------------------
 ;; Initialize app

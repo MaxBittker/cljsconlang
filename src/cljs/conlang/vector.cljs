@@ -48,3 +48,7 @@
 
 (defn random-2d []
  (normalize [(- (rand 2) 1.0) (- (rand 2) 1.0)]))
+
+(defn nrand
+ ([] (nrand 1))
+ ([m] (- (rand (* 2 m)) m)))

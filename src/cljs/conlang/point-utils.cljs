@@ -17,11 +17,32 @@
              grid-width
              lscale]]])
 
+(defn point? [p]
+  (and
+    (= 2 (count p))
+    (every? number? p)))
+
+(defn point-map [f s]
+  (if (point? (first s))
+    (map f s)
+    (map (partial point-map f) s)))
+
 (defn format-points [points]
   (string/join " " (map #(string/join "," %) points)))
 
+(defn prune-line
+ ([points] (prune-line points 1))
+ ([points d]
+  (map
+    (fn [[a b c]] b)
+    (filter
+      (fn [[a b c]]
+        (< d (distance a c)))
+      (partition 3 1
+        (concat [(last points)] points [(first points)]))))))
+
 (defn normalize-points [[a b]]
-  (if (< 1 (count (range 0 (distance a b) step)))
+  (if (< 10 (count (range 0 (distance a b) step)))
     (concat
       (map
         (fn [d] (add a
@@ -30,12 +51,17 @@
                     d)))
         (range 0 (distance a b) (* 0.4 step)))
       [b]);end can get lost because of how step works
-    (list a b)))
+    (if (> 5 (distance a b))
+      (list b)
+      (list a b))))
 
 (defn normalize-line [points]
-  (mapcat
-   normalize-points
-   (partition 2 1 points)))
+  (concat
+   [(first points)]
+   (mapcat
+    normalize-points
+    (partition 2 1 points))
+   [(last points)]))
 
 (defn normalize-lines [lines]
   (map
@@ -53,13 +79,21 @@
          #"L" "")
       #"M"))))
 
-(defn translate-points [pl s o]
+(defn translate-line
+ ([line o] (translate-line line 1 o))
+ ([line s o]
+  (map
+   (fn [p] (add (multiply p s) o))
+   line)))
+
+
+(defn translate-points
+ ([pl o] (translate-points pl 1 o))
+ ([pl s o]
   (map
     (fn [line-points]
-     (map
-      (fn [p] (add (multiply p s) o))
-      line-points))
-   pl))
+      (translate-line line-points s o))
+   pl)))
 
 (defn close-loop [pl]
   (conj (vec pl) (first pl)))
