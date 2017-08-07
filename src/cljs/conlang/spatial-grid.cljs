@@ -36,7 +36,7 @@
     (throw (js/Error. "Out of bounds!")))))
     ;  (println "out of bound"))))
 
-(defn grid-insert-many [grid points s]
+(defn grid-insert-line [grid points s]
   (reduce (fn [g p] (grid-insert g p s))
     grid
     points))
