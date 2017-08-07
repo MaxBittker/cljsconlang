@@ -21,7 +21,7 @@
         :refer [new-grid
                 grid-loc
                 grid-insert
-                grid-insert-many
+                grid-insert-line
                 neighbors-of
                 get-buckets
                 view-grid]]
@@ -154,9 +154,9 @@
 (defn fast-check-point [p points]
   (or
    (some
-    (fn [op] (< (distance op p) step))
+    (fn [op] (< (distance op p) (* 0.8 step)))
     (concat points (get-buckets @spatial-grid p tile-size)))
-   (> (distance p [half half]) (/ size 2))))
+   (> (distance p [half half]) (* size 0.6))))
   ;  (< (distance p [half half]) (/ size 6))))
 
 (defn next-checked-point [points history]
@@ -185,7 +185,7 @@
       walks
       (do
        (swap! spatial-grid
-        (fn [grid] (grid-insert-many
+        (fn [grid] (grid-insert-line
                       grid newwalk tile-size)))
        (cons newwalk walks)))))
 
@@ -351,7 +351,7 @@
 (def word-points
  (str-to-points "mycelium" lscale))
 
-; (swap! spatial-grid grid-insert-many
+; (swap! spatial-grid grid-insert-line
                 ; (apply concat word-points) tile-size))
 
 (reset! mvrs (apply concat
@@ -435,7 +435,7 @@
         (range 0 (* 2 3.15) (* (/ 1 (inc r)) s)))))))
 
 (defn spiral-page []
-  [:div {:class "display thin"}
+  [:div {:class "display hollow"}
   ;  [:pre {:width size :height size}
     ; (lines-to-2obj
      [:svg {:width size :height size}
@@ -531,7 +531,7 @@
     (let [cletter (random-letter-stamp)]
       (if (check-lines cletter grid)
         (recur
-         (grid-insert-many grid (apply concat cletter) tile-size)
+         (grid-insert-line grid (apply concat cletter) tile-size)
          (cons cletter letters)
          (dec cnt))
         (recur
@@ -548,7 +548,7 @@
    (let [cletter (random-skull-stamp)]
      (if (check-lines cletter grid)
        (recur
-        (grid-insert-many grid (apply concat cletter) tile-size)
+        (grid-insert-line grid (apply concat cletter) tile-size)
         (cons cletter letters)
         (dec cnt))
        (recur
@@ -805,7 +805,7 @@
 
 (def sol-points
    (reagent/atom
-     (repeatedly 300
+     (repeatedly 50
        seedpt)))
         ; #(identity
         ;   [[half half]
@@ -823,18 +823,25 @@
 (defn grow-squig [points]
   (let [[sl l] (take-last 2 points)
          dir (normalize (subtract sl l))
-         rotdir (normalize (rotate dir (+ Math.PI -1.1 (rand 1.5))))
-         new-dir (multiply rotdir 3)
+         rotdir (normalize (rotate dir (+ Math.PI (nrand 1.5))))
+         new-dir (multiply rotdir step)
          pull (multiply
                 (subtract [half half] l)
                 (/ 1 half))
          f (multiply
             (add pull
              (multiply (normalize pull) -0.5))
-            1.5)
+            0.7)
          new (add l new-dir f)]
-    ; (print (magnitude f))
-    (conj points new)))
+    ; (println (get-buckets @spatial-grid new tile-size))
+    ; (println @spatial-grid)
+    (if (fast-check-point new points)
+     (vec (butlast (rest points)))
+    ;  points
+     (conj points new))))
+      ; points)))
+
+      ; (rest points))))
 
 (defn grow-squigs [sqs]
   (map grow-squig sqs))
@@ -843,16 +850,23 @@
   (reagent/atom @sol-points))
 
 (defn update-sol [t]
-  (if (zero? (mod @tick 50))
-    (reset! buffer
-       (mapcat
-         #(partition 14 13 %)
-        @sol-points))
-    (swap! sol-points grow-squigs)))
+  (reset! spatial-grid (new-grid grid-width))
+  (swap! spatial-grid
+     (fn [grid] (grid-insert-line
+                  grid (apply concat @sol-points)
+                  tile-size)))
+ ; (println @spatial-grid)
+  ; (if (zero? (mod @tick 3))
+    ; (reset! buffer
+      ;  (mapcat
+        ;  #(partition 14 13 %)
+        ; @sol-points
+ (swap! sol-points grow-squigs))
 
 (defn sol-page []
- (let [pl @buffer]
-   [:div {:class "display thin"}
+ (let [pl (doall @sol-points)]
+  ;  (println pl)
+   [:div {:class "display med"}
     ; [:pre (str pl)]]))
     [:svg {:width size :height size}
       ; (point-list-to-paths [pl])

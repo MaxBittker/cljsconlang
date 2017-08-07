@@ -5,7 +5,7 @@
 
 (def half (/ size 2))
 
-(def step 3)
+(def step 2)
 
 (def tile-size (int (* step 3)))
 

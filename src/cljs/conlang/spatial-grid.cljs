@@ -13,7 +13,11 @@
                       distance
                       normalize
                       to-polar
-                      to-cartesian]]))
+                      to-cartesian]]
+            [conlang.point-utils
+              :refer [
+                      point-map]]))
+
 
 (enable-console-print!)
 
