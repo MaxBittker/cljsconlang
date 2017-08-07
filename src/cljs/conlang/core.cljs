@@ -205,6 +205,7 @@
   (. js/window (requestAnimationFrame #(uploop (dec cnt))))))
 
 (defn update-loop [update-fn cnt]
+ (swap! tick inc)
  (update-fn cnt)
  (if (zero? cnt)
   cnt
@@ -795,12 +796,22 @@
 
       ; (point-list-to-paths grid-vis)]]))
 
+(defn seedpt []
+  (let [a (add [half half]
+            (multiply (random-2d) (* half 0.3
+                                    (+ 1.0(rand)))))
+        b (add a (random-2d))]
+    [a b]))
+
 (def sol-points
    (reagent/atom
-      [[half half] [half half] [half half]
-        (add
-          [half half]
-          [(nrand) (nrand)])]))
+     (repeatedly 300
+       seedpt)))
+        ; #(identity
+        ;   [[half half]
+        ;    (add
+        ;      [half half]
+        ;      [(nrand) (nrand)])]))))
 
 (defn rotate [[x y] a]
   [
@@ -812,30 +823,40 @@
 (defn grow-squig [points]
   (let [[sl l] (take-last 2 points)
          dir (normalize (subtract sl l))
-         rotdir (normalize (rotate dir (+ 2.5 (rand 1.5))))
-         new-dir (multiply rotdir 5)
+         rotdir (normalize (rotate dir (+ Math.PI -1.1 (rand 1.5))))
+         new-dir (multiply rotdir 3)
          pull (multiply
-                ; (map #(Math/pow % 0.01)
-                  (subtract [half half] l)
-                0.01)
-         push (if (< (magnitude pull) 0.7)
-                (multiply pull -1.5)
-                [0 0])
-         new (add l new-dir pull push)]
-    ; (print (magnitude pull))
+                (subtract [half half] l)
+                (/ 1 half))
+         f (multiply
+            (add pull
+             (multiply (normalize pull) -0.5))
+            1.5)
+         new (add l new-dir f)]
+    ; (print (magnitude f))
     (conj points new)))
 
+(defn grow-squigs [sqs]
+  (map grow-squig sqs))
+
+(def buffer
+  (reagent/atom @sol-points))
 
 (defn update-sol [t]
-  (swap! sol-points grow-squig))
+  (if (zero? (mod @tick 50))
+    (reset! buffer
+       (mapcat
+         #(partition 14 13 %)
+        @sol-points))
+    (swap! sol-points grow-squigs)))
 
 (defn sol-page []
- (let [pl @sol-points]
-   [:div {:class "display hollow"}
+ (let [pl @buffer]
+   [:div {:class "display thin"}
     ; [:pre (str pl)]]))
     [:svg {:width size :height size}
       ; (point-list-to-paths [pl])
-      (point-list-to-paths (partition 6 3 pl))]]))
+      (point-list-to-paths pl)]]))
 
     ; (cond (> (count @archive-piles) 100)
     ;  [:pre (lines-to-2obj (rest @archive-piles))]]]))))
