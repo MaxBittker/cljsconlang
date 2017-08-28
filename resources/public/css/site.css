@@ -73,6 +73,14 @@ a:hover {
   opacity: 0.1;
   stroke-width: .3px;
 }
+.noodle polyline,path{
+  opacity: 0.2;
+  stroke-width: .51px;
+  
+  /*stroke: black;*/
+  /*stroke-dasharray: 1, 2;*/
+}
+
 .hollow polyline,path{
   fill: white;
   opacity: 0.1;

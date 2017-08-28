@@ -49,7 +49,9 @@
                 translate-line
                 close-loop
                 close-loops]]
-      [conlang.obj2 :refer [lines-to-2obj]]))
+      [conlang.obj2 :refer [lines-to-2obj]]
+      [conlang.collatz :refer [collatz-vis]]))
+      
 
 
 ;; -------------------------
@@ -805,7 +807,7 @@
 
 (def sol-points
    (reagent/atom
-     (repeatedly 50
+     (repeatedly 800
        seedpt)))
         ; #(identity
         ;   [[half half]
@@ -848,13 +850,20 @@
 
 (def buffer
   (reagent/atom @sol-points))
+  
+(reset! spatial-grid (new-grid grid-width))
+
+; (swap! spatial-grid grid-insert-line ;THIS PUT THIE S ON THE GRID
+              ; (apply concat letter-points) tile-size)
 
 (defn update-sol [t]
-  (reset! spatial-grid (new-grid grid-width))
-  (swap! spatial-grid
-     (fn [grid] (grid-insert-line
-                  grid (apply concat @sol-points)
-                  tile-size)))
+  ; (reset! spatial-grid (new-grid grid-width))
+  ; ; (swap! spatial-grid grid-insert-line
+  ;               ; (apply concat word-points) tile-size
+  ; (swap! spatial-grid
+  ;    (fn [grid] (grid-insert-line
+  ;                 grid (apply concat @sol-points))))
+  ; ;                 tile-size)))
  ; (println @spatial-grid)
   ; (if (zero? (mod @tick 3))
     ; (reset! buffer
@@ -866,16 +875,23 @@
 (defn sol-page []
  (let [pl (doall @sol-points)]
   ;  (println pl)
-   [:div {:class "display med"}
-    ; [:pre (str pl)]]))
+   [:div {:class "display thin"}
     [:svg {:width size :height size}
-      ; (point-list-to-paths [pl])
-      (point-list-to-paths pl)]]))
-
-    ; (cond (> (count @archive-piles) 100)
-    ;  [:pre (lines-to-2obj (rest @archive-piles))]]]))))
+      (point-list-to-paths pl)]
+    (cond (> (count (first pl)) 100)
+      [:pre (lines-to-2obj pl)])
+    [:h2 (count (first pl))]]))
 
       ; (point-list-to-paths grid-vis)]]))
+
+
+(defn collatz-page []
+  (let [pl (collatz-vis)]
+    [:div {:class "display noodle"}
+      [:svg {:width size :height size}
+        (point-list-to-paths pl)
+        [:pre (lines-to-2obj pl)]]]))
+  
 
 
 (defn current-page []
@@ -941,6 +957,11 @@
 (secretary/defroute "/sol-squig" []
   (update-loop update-sol 152000)
   (session/put! :current-page #'sol-page))
+
+
+(secretary/defroute "/collatz" []
+  ; (update-loop update-sol 152000
+    (session/put! :current-page #'collatz-page))
 
 
 ;; -------------------------

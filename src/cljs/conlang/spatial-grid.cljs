@@ -33,7 +33,8 @@
    (if (get-in grid loc)
      (assoc-in grid loc
        (cons p (get-in grid loc)))
-    (throw (js/Error. "Out of bounds!")))))
+    grid)))
+    ; (throw (js/Error. "Out of bounds!")
     ;  (println "out of bound"))))
 
 (defn grid-insert-line [grid points s]
@@ -59,3 +60,4 @@
         ; x))
        row))
    grid))
+
