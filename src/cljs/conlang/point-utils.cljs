@@ -42,18 +42,18 @@
         (concat [(last points)] points [(first points)]))))))
 
 (defn normalize-points [[a b]]
-  (if (< 10 (count (range 0 (distance a b) step)))
-    (concat
-      (map
-        (fn [d] (add a
-                  (multiply
-                    (normalize (subtract b a))
-                    d)))
-        (range 0 (distance a b) (* 0.4 step)))
-      [b]);end can get lost because of how step works
-    (if (> 5 (distance a b))
-      (list b)
-      (list a b))))
+    (if (< 3 (count (range 0 (distance a b) step)))
+      (concat
+        (map
+          (fn [d] (add a
+                    (multiply
+                      (normalize (subtract b a))
+                      d)))
+          (range 0 (distance a b) (* 0.4 step)))
+        [b]);end can get lost because of how step works
+      (if (> 2 (distance a b))
+        (list b)
+        (list a b))))
 
 (defn normalize-line [points]
   (concat

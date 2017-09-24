@@ -71,7 +71,7 @@ a:hover {
 
 .thin polyline,path{
   opacity: 0.1;
-  stroke-width: .3px;
+  stroke-width: 0.3px;
 }
 .noodle polyline,path{
   opacity: 0.2;

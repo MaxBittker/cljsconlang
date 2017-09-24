@@ -303,9 +303,9 @@
     (map-indexed
       (fn [i p]
        [:g {:key i}
-        [:polyline  {:key i :points (format-points p)} 
-           :style {:opacity (/ 1 (inc (/ i 50)))
-                   :stroke-width (str 20 "px")}]])
+        [:polyline  {:key i :points (format-points p) 
+                     :style {:opacity (/ 1 (inc (/ i 50)))}}]])
+                              ; :stroke-width (str (/ 3 i) "px")}}]])
      pl)])
 
 
@@ -903,7 +903,7 @@
   
 (defn projections-page []
   (let [pl (projections-vis @tick)]
-    [:div {:class "display noodle"}
+    [:div {:class "display thin"}
       ; [:pre (str pl)]
       [:svg {:width size :height size}
         ; (point-list-to-paths word-points)
