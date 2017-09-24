@@ -46,7 +46,6 @@
     reverse
     (map-indexed vector)))
 
-    ; (print (collatz-seq 13))
 (def maxx 2000)
 
 (defn modify [[i v]]
@@ -54,6 +53,12 @@
       [(* i 0.036)
        (* (/ (Math/log v) (Math/log 5))
          14)]))
+
 (defn collatz-vis []
   (let [raw (map collatz-seq (range 500 maxx))]
     (pt/point-map modify raw)))
+
+
+
+
+    

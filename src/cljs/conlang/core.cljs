@@ -50,7 +50,8 @@
                 close-loop
                 close-loops]]
       [conlang.obj2 :refer [lines-to-2obj]]
-      [conlang.collatz :refer [collatz-vis]]))
+      [conlang.collatz :refer [collatz-vis]]
+      [conlang.projections :refer [projections-vis]]))
       
 
 
@@ -294,10 +295,18 @@
    (map-indexed
      (fn [i p]
       [:g {:key i}
-      ;  [:polyline  {:points (format-points  (vib p))}]
-      ;  [:polygon  {:points (format-points  (vib p))}]]
         [:polyline  {:key i :points (format-points p)}]])
     pl)])
+
+(defn point-list-to-paths-fade [pl]
+  [:g
+    (map-indexed
+      (fn [i p]
+       [:g {:key i}
+        [:polyline  {:key i :points (format-points p)} 
+           :style {:opacity (/ 1 (inc (/ i 50)))
+                   :stroke-width (str 20 "px")}]])
+     pl)])
 
 
 (defn point-list-to-poly [pl]
@@ -892,7 +901,14 @@
         (point-list-to-paths pl)
         [:pre (lines-to-2obj pl)]]]))
   
-
+(defn projections-page []
+  (let [pl (projections-vis @tick)]
+    [:div {:class "display noodle"}
+      ; [:pre (str pl)]
+      [:svg {:width size :height size}
+        ; (point-list-to-paths word-points)
+        (point-list-to-paths-fade pl)]]))
+          
 
 (defn current-page []
   [:div [(session/get :current-page)]])
@@ -963,6 +979,11 @@
   ; (update-loop update-sol 152000
     (session/put! :current-page #'collatz-page))
 
+
+(secretary/defroute "/projections" []
+    (redraw 10000)
+    (session/put! :current-page #'projections-page))
+    
 
 ;; -------------------------
 ;; Initialize app

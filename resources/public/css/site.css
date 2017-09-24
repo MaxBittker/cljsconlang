@@ -75,7 +75,7 @@ a:hover {
 }
 .noodle polyline,path{
   opacity: 0.2;
-  stroke-width: .51px;
+  /* stroke-width: 1.51px; */
   
   /*stroke: black;*/
   /*stroke-dasharray: 1, 2;*/
