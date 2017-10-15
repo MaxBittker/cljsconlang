@@ -51,7 +51,9 @@
                 close-loops]]
       [conlang.obj2 :refer [lines-to-2obj]]
       [conlang.collatz :refer [collatz-vis]]
-      [conlang.projections :refer [projections-vis]]))
+      [conlang.projections :refer 
+          [projections-vis
+           update-proj]]))
       
 
 
@@ -304,7 +306,7 @@
       (fn [i p]
        [:g {:key i}
         [:polyline  {:key i :points (format-points p) 
-                     :style {:opacity (/ 1 (inc (/ i 50)))}}]])
+                     :style {:opacity (max 0.1 (/ 1 (inc (/ i 50))))}}]])
                               ; :stroke-width (str (/ 3 i) "px")}}]])
      pl)])
 
@@ -976,13 +978,14 @@
 
 
 (secretary/defroute "/collatz" []
-  ; (update-loop update-sol 152000
-    (session/put! :current-page #'collatz-page))
+  (update-loop update-sol 152000)
+  (session/put! :current-page #'collatz-page))
 
 
 (secretary/defroute "/projections" []
-    (redraw 10000)
-    (session/put! :current-page #'projections-page))
+    ; (redraw 10000)
+  (update-loop update-proj 152000)
+  (session/put! :current-page #'projections-page))
     
 
 ;; -------------------------
