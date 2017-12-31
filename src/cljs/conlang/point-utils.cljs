@@ -28,9 +28,7 @@
     (map (partial point-map f) s)))
 
 (defn format-points [points]
-  (if (and (= 2 (count points)) (apply = points))
-   ""
-   (string/join " " (map #(string/join "," %) points))))
+   (string/join " " (map #(string/join "," %) points)))
 
 (defn prune-line
  ([points] (prune-line points 1))

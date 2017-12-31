@@ -924,8 +924,9 @@
 (defn cal-page []
  (let [pl (cal-vis)]
   [:div {:class "display med"}
-    [:svg {:width size :height size}
-      (point-list-to-paths pl)]]))
+   [:svg {:width size :height size}
+    (point-list-to-paths pl)]
+   [:pre (lines-to-2obj pl)]]))
 
 
 (defn current-page []

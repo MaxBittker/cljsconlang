@@ -107,6 +107,11 @@
            (map vector dseq vhoseq))))
        
 (defn cal-vis []
-    (str-to-points cal-text 0.21))
+    (filter 
+        (fn [line] 
+            (let [is2 (= (count line) 2)]
+             (not  
+                (and is2 (apply = line)))))
+     (str-to-points cal-text 0.21)))
 
 
