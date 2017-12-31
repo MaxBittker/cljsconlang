@@ -7,3 +7,5 @@
 
 (def fonts-data 
   (js->clj a :keywordize-keys true))
+
+(println (keys fonts-data))

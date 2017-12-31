@@ -1,15 +1,15 @@
 .body-container {
   font-family: 'Helvetica Neue', Verdana, Helvetica, Arial, sans-serif;
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
-  padding-top: 72px;
+  /* padding-top: 72px; */
   -webkit-font-smoothing: antialiased;
   font-size: 1.125em;
   color: #eee;
   line-height: 1.5em;
 }
 html{
-  background-color: #223;
+  background-color: #fafafa;
 }
 h1, h2, h3 {
   color: #000;
@@ -51,7 +51,7 @@ a:hover {
   fill: #ffe;
 }
 .display polygon{
-  stroke: #fff;
+  stroke: #223;
   stroke-width: 0.5px;
   opacity: 0.5;
   fill-opacity: 0.0;
@@ -60,7 +60,7 @@ a:hover {
 .display polyline,path {
   stroke-linejoin: round;
   stroke-linecap: round;
-  stroke: #fff;
+  stroke: #223;
   stroke-width: 1px;
   fill: none;
 }
@@ -70,7 +70,8 @@ a:hover {
 }
 
 .thin polyline,path{
-  opacity: 0.1;
+  opacity: 0.2;
+  /* fill: hsl(14, 86%, 22%); */
   stroke-width: 0.3px;
 }
 .noodle polyline,path{
@@ -82,7 +83,7 @@ a:hover {
 }
 
 .hollow polyline,path{
-  fill: white;
+  fill: #000006;
   opacity: 0.1;
   /*stroke: black;*/
   /*stroke-dasharray: 1, 2;*/

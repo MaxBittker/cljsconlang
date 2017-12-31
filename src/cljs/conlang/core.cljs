@@ -51,9 +51,10 @@
                 close-loops]]
       [conlang.obj2 :refer [lines-to-2obj]]
       [conlang.collatz :refer [collatz-vis]]
+      [conlang.grass :refer [grass-vis]] 
+      [conlang.cal :refer [cal-vis]] 
       [conlang.projections :refer 
-          [projections-vis
-           update-proj]]))
+          [projections-vis update-proj]]))
       
 
 
@@ -305,8 +306,8 @@
     (map-indexed
       (fn [i p]
        [:g {:key i}
-        [:polyline  {:key i :points (format-points p) 
-                     :style {:opacity (max 0.1 (/ 1 (inc (/ i 50))))}}]])
+        [:polyline  {:key i :points (format-points p)}]]) 
+                    ;  :style {:opacity (max 0.1 (/ 1 (inc (/ i 50))))}}]])
                               ; :stroke-width (str (/ 3 i) "px")}}]])
      pl)])
 
@@ -910,7 +911,22 @@
       [:svg {:width size :height size}
         ; (point-list-to-paths word-points)
         (point-list-to-paths-fade pl)]]))
-          
+
+        
+(defn grass-page []
+  (let [pl (grass-vis)]
+    [:div {:class "display thin"}
+      ; [:pre (str pl)]
+      [:svg {:width size :height size}
+        ; (point-list-to-paths word-points)
+       (point-list-to-paths-fade pl)]]))
+
+(defn cal-page []
+ (let [pl (cal-vis)]
+  [:div {:class "display med"}
+    [:svg {:width size :height size}
+      (point-list-to-paths pl)]]))
+
 
 (defn current-page []
   [:div [(session/get :current-page)]])
@@ -976,11 +992,9 @@
   (update-loop update-sol 152000)
   (session/put! :current-page #'sol-page))
 
-
 (secretary/defroute "/collatz" []
   (update-loop update-sol 152000)
   (session/put! :current-page #'collatz-page))
-
 
 (secretary/defroute "/projections" []
     ; (redraw 10000)
@@ -988,6 +1002,12 @@
   (session/put! :current-page #'projections-page))
     
 
+(secretary/defroute "/grass" []
+  (session/put! :current-page #'grass-page))
+    
+(secretary/defroute "/cal" []
+  (session/put! :current-page #'cal-page))
+    
 ;; -------------------------
 ;; Initialize app
 

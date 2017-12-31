@@ -1,11 +1,11 @@
 (ns conlang.constants)
 
 
-(def size 250)
+(def size 350)
 
 (def half (/ size 2))
 
-(def step 20)
+(def step 1)
 
 (def tile-size (int (* step 3)))
 
