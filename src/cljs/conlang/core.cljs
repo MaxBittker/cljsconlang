@@ -53,6 +53,7 @@
       [conlang.collatz :refer [collatz-vis]]
       [conlang.grass :refer [grass-vis]] 
       [conlang.cal :refer [cal-vis]] 
+      [conlang.week-cal :refer [week-cal-vis]] 
       [conlang.projections :refer 
           [projections-vis update-proj]]))
       
@@ -925,9 +926,14 @@
  (let [pl (cal-vis)]
   [:div {:class "display med"}
    [:svg {:width size :height size}
-    (point-list-to-paths pl)]
-   [:pre (lines-to-2obj pl)]]))
+    (point-list-to-paths pl)]]))
+  ;  [:pre (lines-to-2obj pl)]]))
 
+(defn week-cal-page []
+  (let [pl (week-cal-vis)]
+    [:div {:class "display med"}
+     [:svg {:width size :height size}
+      (point-list-to-paths pl)]]))
 
 (defn current-page []
   [:div [(session/get :current-page)]])
@@ -1008,7 +1014,11 @@
     
 (secretary/defroute "/cal" []
   (session/put! :current-page #'cal-page))
-    
+
+(secretary/defroute "/week-cal" []
+  (session/put! :current-page #'week-cal-page))
+  
+  
 ;; -------------------------
 ;; Initialize app
 
